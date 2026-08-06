@@ -1,4 +1,10 @@
 <!--
+Status: ACTIVE PROCESS TEMPLATE WHEN PRESENT ON main
+Authority: Process only
+A branch or PR copy is candidate material.
+-->
+
+<!--
 Evidensbasert PR-mal. Behold overskriftene. Fyll ut kort og konkret.
 -->
 
@@ -56,6 +62,5 @@ Evidensbasert PR-mal. Behold overskriftene. Fyll ut kort og konkret.
       informasjon er inkludert
 - [ ] Ingen unødvendig avhengighet er introdusert
 - [ ] Lenker til commit-SHA og Handoff er inkludert ovenfor
-- [ ] Eksplisitt Founder-godkjenning kreves før merge
-- [ ] Joint Website Change Gate forblir NOT PASSED for endringer av
-      den offentlige nettsideoverflaten
+- [ ] Explicit Founder approval is recorded before merge
+- [ ] Joint Website Change Gate status is explicitly recorded

@@ -1,6 +1,7 @@
 # Dokumentkart — Varde Ark website
 
-Status: NAVIGATOR — IKKE GOVERNANCE-DUPLIKAT
+Status: ACTIVE NAVIGATOR WHEN PRESENT ON `main`
+Authority: NONE — NAVIGATION ONLY
 Sist oppdatert: 2026-08-06
 
 Dette er et kompakt kart over site-kontroll-dokumentene i denne
@@ -12,10 +13,10 @@ alltid dokumentet det peker til.
 
 | Dokument | Formål | Status | Authority | Les når | Autoriserer ikke |
 |---|---|---|---|---|---|
-| `SITE_DECISION.md` | Site-lokal design- og implementeringsbaseline, inkl. SITE-###-beslutninger | CANDIDATE — REVIEW REQUIRED — NOT ACTIVE | Site-local candidate authority only | Før enhver site-endring, og alltid før en SITE-###-post refereres | Aktivering av noen SITE-###-post, eller noen endring av offentlig nettside |
-| `docs/SITE_WORKING_MODEL.md` | Arbeidsavtale for Jakob, ChatGPT, Claude Code og GitHub | CANDIDATE — REVIEW REQUIRED — NOT ACTIVE | Workflow authority only | Før en ny oppgave startes, og ved uklarhet om roller/rekkefølge | Endring av produkt, arkitektur eller offentlig nettside |
-| `docs/README.md` (dette dokumentet) | Kompakt dokumentkart og lesehenvisning | NAVIGATOR | None | Ved oppstart av en oppgave, for å finne riktig dokument | Noe som helst — dette er kun en henvisning |
-| `.github/pull_request_template.md` | Evidensbasert PR-mal | ACTIVE TEMPLATE | Process only | Ved åpning av enhver PR mot denne repoen | Merge uten Founder-godkjenning |
+| `SITE_DECISION.md` | Site-lokal design- og implementeringsbaseline, inkl. SITE-###-beslutninger | ACTIVE WHEN PRESENT ON `main` | Site-local candidate authority only | Før enhver site-endring, og alltid før en SITE-###-post refereres | Noen endring av offentlig nettside — SITE-006 forblir NOT PASSED |
+| `docs/SITE_WORKING_MODEL.md` | Arbeidsavtale for Jakob, ChatGPT, Claude Code og GitHub | ACTIVE WHEN PRESENT ON `main` | Workflow authority only | Før en ny oppgave startes, og ved uklarhet om roller/rekkefølge | Endring av produkt, arkitektur eller offentlig nettside |
+| `docs/README.md` (dette dokumentet) | Kompakt dokumentkart og lesehenvisning | ACTIVE NAVIGATOR WHEN PRESENT ON `main` | None | Ved oppstart av en oppgave, for å finne riktig dokument | Noe som helst — dette er kun en henvisning |
+| `.github/pull_request_template.md` | Evidensbasert PR-mal | ACTIVE PROCESS TEMPLATE WHEN PRESENT ON `main` | Process only | Ved åpning av enhver PR mot denne repoen | Merge uten Founder-godkjenning |
 
 ## Anbefalt leserekkefølge
 

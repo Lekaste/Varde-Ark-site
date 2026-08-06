@@ -2,12 +2,14 @@
 
 Formål: Site-lokal design- og implementeringsbaseline for Varde Ark.
 
-Status: CANDIDATE — REVIEW REQUIRED — NOT ACTIVE
+Status: ACTIVE WHEN PRESENT ON `main`
 
 Authority:
 Site-local candidate authority only.
 No Jakjo runtime, architecture, product, legal, or claim authority.
-Activation requires explicit Founder approval and controlled merge to main.
+This document has site-local authority only when present on `main`.
+A branch, PR, draft, Handoff, or chat statement remains candidate
+material and has no active baseline authority.
 
 Dato: 2026-08-06
 
@@ -166,13 +168,14 @@ En site-endring er ferdig når:
 
 ## 12. Stable decision register
 
-Alle beslutninger under er **CANDIDATE** i denne PR-en. Ingen av dem er
-aktive. Aktivering krever egen, eksplisitt Founder-beslutning og
-kontrollert merge til `main`.
+Alle beslutninger under er **ACTIVE WHEN PRESENT ON `main`**. Jf.
+seksjon 3: en Founder-beslutning autoriserer, men aktiverer ikke alene
+— aktivering skjer først når dette dokumentet er kontrollert merget
+til `main`.
 
 ### SITE-001 — Existing-page evolution
 
-Status: CANDIDATE
+Status: ACTIVE WHEN PRESENT ON `main`
 
 - Bygg videre på gjeldende `main/index.html`.
 - Ingen fullstendig redesign uten eksplisitt Founder-godkjenning.
@@ -181,7 +184,7 @@ Status: CANDIDATE
 
 ### SITE-002 — Static-first and dependency-minimal
 
-Status: CANDIDATE
+Status: ACTIVE WHEN PRESENT ON `main`
 
 - Foretrekk semantisk HTML og CSS.
 - Ingen rammeverk, byggepipeline, ekstern avhengighet, analytics,
@@ -191,7 +194,7 @@ Status: CANDIDATE
 
 ### SITE-003 — Responsive and accessible by default
 
-Status: CANDIDATE
+Status: ACTIVE WHEN PRESENT ON `main`
 
 - Mobil og desktop er begge påkrevd.
 - Bruk semantisk struktur, tastaturoperabilitet, synlig fokus,
@@ -202,7 +205,7 @@ Status: CANDIDATE
 
 ### SITE-004 — Controlled external claims
 
-Status: CANDIDATE
+Status: ACTIVE WHEN PRESENT ON `main`
 
 - Ekstern tekst skal forbli konsistent med gjeldende Jakjo Product
   Truth og positioning boundaries.
@@ -215,7 +218,7 @@ Status: CANDIDATE
 
 ### SITE-005 — One controlled work surface
 
-Status: CANDIDATE
+Status: ACTIVE WHEN PRESENT ON `main`
 
 - Normalt skal kun én aktiv website-branch/PR eksistere om gangen.
 - En andre aktiv website-branch krever eksplisitt Founder-godkjenning
@@ -231,7 +234,7 @@ Status: CANDIDATE
 
 ### SITE-006 — Joint Website Change Gate
 
-Status: CANDIDATE
+Status: ACTIVE WHEN PRESENT ON `main`
 
 - Ingen endring av den offentlige nettsideoverflaten kan skje før
   Jakob og ChatGPT begge eksplisitt har uttalt at evidensgrunnlaget og
@@ -263,3 +266,4 @@ Jakjo som produkt eller selskap (jf. seksjon 3).
 | Dato | Endring | Status | Forfatter |
 |---|---|---|---|
 | 2026-08-06 | Opprettet dokument med SITE-001 til SITE-006 som candidate-beslutninger. Ingen aktivering. | CANDIDATE — REVIEW REQUIRED — NOT ACTIVE | Claude Code (SITE-001 baseline task) |
+| 2026-08-06 | Founder godkjente SITE-001-baselinen for kontrollert aktivering. Livssyklus justert til å bli aktiv kun ved tilstedeværelse på `main`. Ingen endring av den offentlige nettsiden ble autorisert. Joint Website Change Gate (SITE-006) forblir NOT PASSED. | ACTIVE WHEN PRESENT ON `main` | Claude Code (SITE-001 activation-prep task) |
