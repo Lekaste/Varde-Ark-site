@@ -2,6 +2,8 @@
 Status: ACTIVE PROCESS TEMPLATE WHEN PRESENT ON main
 Authority: Process only
 A branch or PR copy is candidate material.
+Repository visibility: PUBLIC
+All branch and PR content is public exposure.
 -->
 
 <!--
@@ -38,6 +40,27 @@ Evidensbasert PR-mal. Behold overskriftene. Fyll ut kort og konkret.
 <!-- Bekreft at ingen ny ekstern påstand, ingen persondata/konfidensielt
      innhold er introdusert -->
 
+## Public disclosure classification
+
+<!-- Bekreft GREEN/YELLOW/RED classification for hele public artifact
+     set:
+     - files
+     - filenames
+     - branch name
+     - commit messages
+     - PR title
+     - PR body
+     - comments
+     - reviews
+     - issues
+     - attachments
+     - logs
+     - artifacts
+
+     RED content must not be pushed.
+     YELLOW requires recorded clearance.
+     Patent-relevant YELLOW requires qualified patent counsel-clearance. -->
+
 ## Evidence
 
 <!-- Lenke til commit-SHA og Handoff -->
@@ -67,3 +90,9 @@ Evidensbasert PR-mal. Behold overskriftene. Fyll ut kort og konkret.
 <!-- Confirm semantic consistency across Status, Authority, Purpose,
      normative text, decision register, document map, changelog and PR body. -->
 - [ ] Lifecycle Integrity Guard passed when status or authority changed
+- [ ] Repository visibility confirmed as PUBLIC
+- [ ] Public Disclosure Integrity Guard passed before first push
+- [ ] Full public artifact set reviewed
+- [ ] No RED content is present
+- [ ] Required YELLOW clearance is recorded
+- [ ] Patent application and trade-secret boundary reviewed where relevant

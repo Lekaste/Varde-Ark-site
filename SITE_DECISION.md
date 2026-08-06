@@ -19,7 +19,7 @@ Dette dokumentet er den site-lokale baselinen for design,
 informasjonsarkitektur, teknisk standard og endringsstyring for
 Varde Ark-nettstedet (`Lekaste/Varde-Ark-site`).
 
-SITE-001 til SITE-006 er Founder-godkjent for kontrollert aktivering
+SITE-001 til SITE-007 er Founder-godkjent for kontrollert aktivering
 og har site-lokal autoritet bare når dette dokumentet er til stede på
 `main`. På branch eller i PR er dokumentet kandidatmateriale.
 
@@ -48,11 +48,9 @@ branch blir aldri stille til aktiv baseline-autoritet.
 
 Rekkefølge ved motstrid:
 
-1. Gjeldende Jakjo-autoritet, for alt som angår Jakjo som produkt,
-   identitet, krav, personvern, data, sikkerhet og IP
-   (`Lekaste/Jakjo` `governance/ARCHITECTURE_DECISIONS.md`,
-   `governance/JAKJO_PRODUCT_TRUTH.md`,
-   `governance/competitive_position/POSITIONING_BOUNDARIES.md`).
+1. Applicable private Jakjo product, claim, IP and architecture
+   authority, for alt som angår Jakjo som produkt, identitet, krav,
+   personvern, data, sikkerhet og IP.
 2. Eksplisitt Founder-godkjente og kontrollert mergede site-beslutninger
    på `main`.
 3. Aktive `SITE_DECISION.md`-poster på `main`.
@@ -125,10 +123,8 @@ forhåndsgodkjennes ikke av dette dokumentet.
 
 ## 9. Claim, privacy, data, security, and IP boundaries
 
-- All ekstern tekst på nettstedet skal være konsistent med gjeldende
-  Jakjo Product Truth og positioning boundaries
-  (`Lekaste/Jakjo` `governance/JAKJO_PRODUCT_TRUTH.md` og
-  `governance/competitive_position/POSITIONING_BOUNDARIES.md`).
+- All ekstern tekst på nettstedet skal være konsistent med applicable
+  private Jakjo product, claim, IP and architecture authority.
 - Ingen ubegrunnede påstander om compliance, juridisk status,
   markedsvalidering, kundevalidering, enterprise-readiness, ROI,
   patentstatus eller produksjonsmodenhet.
@@ -138,18 +134,38 @@ forhåndsgodkjennes ikke av dette dokumentet.
 - Dette dokumentet oppretter ingen ny claim-autoritet. Ved konflikt
   gjelder Jakjo-governance foran dette dokumentet for alt som handler
   om Jakjo som produkt eller selskap.
+- Public communication skal tydelig forklare problem, product
+  artifact, intended value, verified status og governance discipline.
+- Public communication skal ikke avsløre reconstructive technical
+  detail, non-public architecture, runtime internals, exact decision
+  logic, rules, thresholds, patent application content, claim
+  strategy, filing strategy, patent counsel communication eller trade
+  secrets.
+- Applicable private Jakjo authority styrer klassifisering og
+  disclosure boundary (jf. SITE-007).
+- En innsendt patentsøknad gjør ikke automatisk søknadsinnhold,
+  claims, drawings, filing strategy eller tilgrensende trade secrets
+  public-safe.
+- Uklarhet betyr STOP.
 
 ## 10. Change workflow
 
 1. Endring foreslås og beskrives med omfang, evidens og
-   tilbakerullingsplan.
-2. Endring implementeres på én aktiv site-arbeidsgren
+   tilbakerullingsplan. Lokal branch creation og local drafting kan
+   skje før public push.
+2. Public Disclosure Integrity Guard (jf. SITE-007,
+   `docs/SITE_WORKING_MODEL.md` §3.2) skal bestås før første public
+   push, før PR creation, på nytt før ready-for-review, og på nytt før
+   merge. Før push skal hele public artifact set være ferdig
+   klassifisert og public-safe. En branch, commit eller PR skal aldri
+   brukes som scratchpad for sensitivt eller uavklart materiale.
+3. Endring implementeres på én aktiv site-arbeidsgren
    (jf. SITE-005), med Handoff.
-3. Joint Website Change Gate (SITE-006) må passeres eksplisitt av
+4. Joint Website Change Gate (SITE-006) må passeres eksplisitt av
    både Jakob og ChatGPT for den konkrete, avgrensede endringen før
    noen endring av den offentlige nettsideoverflaten kan skje.
-4. Merge til `main` krever eksplisitt Founder-godkjenning.
-5. Verifisert deploy er eneste bekreftelse på faktisk offentlig
+5. Merge til `main` krever eksplisitt Founder-godkjenning.
+6. Verifisert deploy er eneste bekreftelse på faktisk offentlig
    tilstand — ikke en PR, en branch, en Handoff eller en chat-uttalelse.
 
 ## 11. Definition of Done
@@ -167,7 +183,12 @@ En site-endring er ferdig når:
   offentlige nettsideoverflaten);
 - Founder har gitt eksplisitt godkjenning før merge;
 - Enhver lifecycle- eller authority-endring har bestått Lifecycle
-  Integrity Guard i `docs/SITE_WORKING_MODEL.md`.
+  Integrity Guard i `docs/SITE_WORKING_MODEL.md`;
+- Hele public artifact set har bestått Public Disclosure Integrity
+  Guard før første push og før merge. Public artifact set omfatter:
+  filenames, file content, branch name, commit messages, PR title, PR
+  body, comments, issues, attachments, samt genererte logs og
+  artifacts.
 
 ## 12. Stable decision register
 
@@ -255,6 +276,49 @@ Status: ACTIVE WHEN PRESENT ON `main`
 ikke er passert. Ingen endring av den offentlige nettsideoverflaten er
 autorisert av dette dokumentet eller av denne PR-en.**
 
+### SITE-007 — Public Repository Disclosure Boundary
+
+Status: ACTIVE WHEN PRESENT ON `main`
+
+- Dette repositoryet er public. Alle branches, commits, PR-er,
+  comments, issues, attachments, tags og andre pushed GitHub surfaces
+  skal behandles som umiddelbar offentlig eksponering.
+- Branches og PR-er er offentlig kandidatmateriale. De er ikke private
+  staging areas og har ingen aktiv site-local authority før
+  kontrollert merge til `main`.
+- Public Disclosure Integrity Guard (`docs/SITE_WORKING_MODEL.md`
+  §3.2) skal bestås før første push, ikke bare før ready-for-review
+  eller merge.
+- Uavklart eller sensitivt materiale skal behandles lokalt eller i et
+  eksplisitt private workspace. Det skal aldri pushes hit for å bli
+  vurdert i etterkant.
+- Public communication skal forklare problem, product artifact,
+  intended value, verified status og governance discipline tydelig og
+  profesjonelt.
+- Public communication skal ikke avsløre non-public implementation,
+  reconstructive technical detail, runtime internals, exact decision
+  logic, patent application content, claim strategy, patent counsel
+  communication eller trade secrets.
+- En innsendt patentsøknad gjør ikke automatisk teknisk innhold,
+  claims, drawings, filing strategy eller tilgrensende trade secrets
+  public-safe.
+- Public classification:
+  - GREEN: Public-safe og kan deles.
+  - YELLOW: Krever eksplisitt Founder- og ChatGPT-clearance.
+  - Patent-relevant YELLOW krever i tillegg clearance fra qualified
+    patent counsel.
+  - RED: Skal aldri pushes til dette repositoryet.
+- Uklar klassifisering behandles som RED.
+- Brudd, uklarhet eller manglende clearance gir:
+
+```text
+FAIL — PUBLIC DISCLOSURE INTEGRITY
+```
+
+- SITE-007 passerer ikke SITE-006. Public website changes krever
+  fortsatt separat Joint Website Change Gate for den konkrete,
+  avgrensede endringen.
+
 ## 13. Supersession rule
 
 En SITE-###-beslutning kan kun endres eller erstattes gjennom en ny,
@@ -271,3 +335,4 @@ Jakjo som produkt eller selskap (jf. seksjon 3).
 | 2026-08-06 | Opprettet dokument med SITE-001 til SITE-006 som candidate-beslutninger. Ingen aktivering. | CANDIDATE — REVIEW REQUIRED — NOT ACTIVE | Claude Code (SITE-001 baseline task) |
 | 2026-08-06 | Founder godkjente SITE-001-baselinen for kontrollert aktivering. Livssyklus justert til å bli aktiv kun ved tilstedeværelse på `main`. Ingen endring av den offentlige nettsiden ble autorisert. Joint Website Change Gate (SITE-006) forblir NOT PASSED. | ACTIVE WHEN PRESENT ON `main` | Claude Code (SITE-001 activation-prep task) |
 | 2026-08-06 | Rettet motstridende candidate/active-semantikk funnet i endelig ChatGPT-governancegjennomgang (authority-blokk, formål og designretning refererte fortsatt til kandidat/venter-på-godkjenning-tilstand etter at livssyklusstatus var endret til aktiv). Ordlyd i authority, formål og designretning justert. Lifecycle Integrity Guard i `docs/SITE_WORKING_MODEL.md` referert. Ingen endring av den offentlige nettsiden ble autorisert. Joint Website Change Gate (SITE-006) forblir NOT PASSED. | ACTIVE WHEN PRESENT ON `main` | Claude Code (SITE-001 lifecycle-integrity task) |
+| 2026-08-06 | Founder autoriserte SITE-007 (Public Repository Disclosure Boundary). Public branches og PR-er presisert som offentlig eksponering fra push-tidspunktet. Pre-push Public Disclosure Integrity Guard etablert (`docs/SITE_WORKING_MODEL.md` §3.2). Patent application- og trade-secret-grensen presisert. Konkrete private Jakjo governance-paths redusert til generisk henvisning i normative public sections. Ingen endring av den offentlige nettsiden ble autorisert. Joint Website Change Gate (SITE-006) forblir NOT PASSED. | ACTIVE WHEN PRESENT ON `main` | Claude Code (SITE-007 public-disclosure-gate task) |

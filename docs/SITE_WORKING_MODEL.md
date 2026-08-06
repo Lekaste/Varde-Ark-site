@@ -1,6 +1,6 @@
 # SITE WORKING MODEL
 
-Version: 1.3
+Version: 1.4
 Date: 2026-08-06
 Status: ACTIVE WHEN PRESENT ON `main`
 Authority: Workflow authority when present on `main`; candidate material elsewhere
@@ -56,6 +56,9 @@ FOUNDER INTENT
 - Endringer i arbeidsmodell og prompt er tillatt når Jakob ber om det.
 - Forespurte endringer skal vurderes, versjoneres og logges.
 - Ingen stille endringer.
+- Fordi repositoryet er public, må content classification og
+  disclosure review skje før første push. Branch eller draft PR er
+  ikke et private review-rom.
 
 ## 3.1 Lifecycle Integrity Guard
 
@@ -93,6 +96,68 @@ FAIL — LIFECYCLE INTEGRITY
    - Handoff-evidens som lister sjekkede termer og resultat.
 9. Denne guarden krever ikke et nytt governance-dokument eller en ny
    avhengighet.
+
+## 3.2 Public Disclosure Integrity Guard
+
+Dette repositoryet er public. Guarden gjelder før første push og på
+nytt før merge.
+
+1. Guarden gjelder før første push og på nytt før merge.
+2. Hele public artifact set skal vurderes samlet:
+   - filenames
+   - file content
+   - branch name
+   - commit messages
+   - PR title og body
+   - comments
+   - reviews
+   - issues
+   - attachments
+   - logs
+   - generated artifacts
+3. Klassifisering:
+   - GREEN: Public-safe.
+   - YELLOW: Krever eksplisitt Founder- og ChatGPT-clearance.
+   - Patent-relevant YELLOW: Krever qualified patent counsel-clearance
+     i tillegg.
+   - RED: Blocked.
+4. Uklarhet klassifiseres som RED.
+5. Public-safe communication skal være tydelig om:
+   - problem
+   - product artifact
+   - intended value
+   - verified status
+   - governance discipline
+6. Følgende skal ikke pushes:
+   - non-public technical implementation;
+   - reconstructive architecture eller runtime detail;
+   - exact decision logic, rules eller thresholds;
+   - patent application content, claims, drawings eller filing
+     strategy;
+   - patent counsel communication;
+   - trade secrets;
+   - private credentials;
+   - personal data;
+   - customer data;
+   - confidential material.
+7. En innsendt patentsøknad opphever ikke guarden.
+8. Public branch eller PR er kandidatmateriale med hensyn til
+   authority, men offentlig med hensyn til exposure.
+9. Failure state:
+
+```text
+FAIL — PUBLIC DISCLOSURE INTEGRITY
+```
+
+10. Ved failure:
+    - ingen push av uklassifisert innhold;
+    - ingen PR creation;
+    - ingen ready-for-review;
+    - ingen merge;
+    - flytt vurdering og sensitivt materiale til local/private
+      workspace.
+11. Guarden skal være fail-fast og krever ikke et nytt
+    governance-dokument eller en ny dependency.
 
 ## 4. Standard ChatGPT-statusheader
 
@@ -141,6 +206,11 @@ regel eksplisitt krever noe annet.
 - Rollback
 - PR
 - Recommended next decision
+- Repository visibility
+- Public artifact set reviewed
+- GREEN/YELLOW/RED classification
+- Patent/application/trade-secret check
+- Public Disclosure Integrity result
 
 ## 6. Forhold til SITE_DECISION.md
 
@@ -164,3 +234,4 @@ logges nedenfor. Ingen stille endring er tillatt.
 | 1.1 | 2026-08-06 | Formaliserer Joint Website Change Gate (SITE-006) som forutsetning for enhver endring av den offentlige nettsideoverflaten. Formaliserer én aktiv website-branch som standard (SITE-005). Presiserer at status er CANDIDATE — REVIEW REQUIRED — NOT ACTIVE inntil eksplisitt Founder-godkjenning og kontrollert merge til `main`. Dette er versjonen som gjennomgås i PR #1. |
 | 1.2 | 2026-08-06 | Founder godkjente kontrollert aktivering. Livssyklus er nå aktiv kun på `main`. Endringer av den offentlige nettsiden krever fortsatt at SITE-006 passeres separat. PR #1 forblir docs-only. |
 | 1.3 | 2026-08-06 | Lifecycle-authority-inkonsistens funnet i endelig ChatGPT-governancegjennomgang (stale candidate-ordlyd bevart etter at status ble endret til aktiv). Lifecycle Integrity Guard (seksjon 3.1) innført. Semantisk helhetsvalidering er nå obligatorisk ved enhver lifecycle- eller authority-endring. Ingen endring av den offentlige nettsiden ble autorisert. PR #1 forblir docs-only. |
+| 1.4 | 2026-08-06 | SITE-007 implementert. Public branch/PR-eksponering presisert (alt som pushes til dette public repositoryet er offentlig fra push-tidspunktet, uavhengig av authority-status). Pre-push disclosure review etablert gjennom Public Disclosure Integrity Guard (seksjon 3.2). Patent application- og trade-secret-grensen presisert. Konkrete private Jakjo governance-paths redusert i public documentation. Ingen website-surface change autorisert. SITE-006 forblir NOT PASSED. |
