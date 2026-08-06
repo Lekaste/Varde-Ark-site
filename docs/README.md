@@ -63,9 +63,15 @@ fjernes. Kartet skal aldri henge etter den faktiske dokumentstrukturen.
 
 Dette repositoryet er public.
 
-Branches, commits, PR-er, comments, issues og attachments er ikke
-private staging surfaces. Alt som pushes hit skal allerede være
-public-safe og ha bestått Public Disclosure Integrity Guard.
+Branches og PR-er er ikke private. Comment, review, issue og
+attachment er heller ikke private staging surfaces. Alt som pushes
+eller skrives til en public GitHub surface skal allerede være
+public-safe og ha bestått Public Disclosure Integrity Guard før
+handlingen utføres — guarden gjelder umiddelbart før hver public
+write, ikke bare før første push.
+
+Hele public artifact set kontrolleres i tillegg samlet før
+ready-for-review og før merge.
 
 Uavklart eller sensitivt materiale skal behandles lokalt eller i et
 eksplisitt private workspace.

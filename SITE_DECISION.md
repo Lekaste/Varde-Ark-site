@@ -154,10 +154,18 @@ forhåndsgodkjennes ikke av dette dokumentet.
    tilbakerullingsplan. Lokal branch creation og local drafting kan
    skje før public push.
 2. Public Disclosure Integrity Guard (jf. SITE-007,
-   `docs/SITE_WORKING_MODEL.md` §3.2) skal bestås før første public
-   push, før PR creation, på nytt før ready-for-review, og på nytt før
-   merge. Før push skal hele public artifact set være ferdig
-   klassifisert og public-safe. En branch, commit eller PR skal aldri
+   `docs/SITE_WORKING_MODEL.md` §3.2) skal bestås umiddelbart før hver
+   public write. Hele public artifact set skal i tillegg gjennomgås
+   samlet på nytt før ready-for-review og før merge. Stage-specific
+   kontroll:
+   - Før push: branch name, filenames, diff og commit message.
+   - Før PR creation eller update: PR title og PR body.
+   - Før comment, review eller issue: den konkrete teksten og
+     eventuell metadata.
+   - Før upload, tag, release eller artifact publication: fil, navn,
+     metadata og innhold.
+   - Før ready-for-review og merge: hele public artifact set.
+   En branch, commit, PR, comment, review eller issue skal aldri
    brukes som scratchpad for sensitivt eller uavklart materiale.
 3. Endring implementeres på én aktiv site-arbeidsgren
    (jf. SITE-005), med Handoff.
@@ -184,11 +192,13 @@ En site-endring er ferdig når:
 - Founder har gitt eksplisitt godkjenning før merge;
 - Enhver lifecycle- eller authority-endring har bestått Lifecycle
   Integrity Guard i `docs/SITE_WORKING_MODEL.md`;
-- Hele public artifact set har bestått Public Disclosure Integrity
-  Guard før første push og før merge. Public artifact set omfatter:
-  filenames, file content, branch name, commit messages, PR title, PR
-  body, comments, issues, attachments, samt genererte logs og
-  artifacts.
+- Hver public write har bestått en stage-specific Public Disclosure
+  Integrity review (jf. seksjon 10);
+- Hele public artifact set har bestått samlet Public Disclosure
+  Integrity review før ready-for-review og før merge. Public artifact
+  set omfatter: filenames, file content, branch name, commit messages,
+  PR title, PR body, comments, issues, attachments, samt genererte
+  logs og artifacts.
 
 ## 12. Stable decision register
 
@@ -287,8 +297,14 @@ Status: ACTIVE WHEN PRESENT ON `main`
   staging areas og har ingen aktiv site-local authority før
   kontrollert merge til `main`.
 - Public Disclosure Integrity Guard (`docs/SITE_WORKING_MODEL.md`
-  §3.2) skal bestås før første push, ikke bare før ready-for-review
-  eller merge.
+  §3.2) skal bestås umiddelbart før hver public write — push, PR
+  creation/update, comment, review, issue, attachment, tag, release
+  eller annen publisering til en public GitHub surface. Hele public
+  artifact set skal i tillegg gjennomgås samlet på nytt før
+  ready-for-review og før merge.
+- Public artifact set omfatter også external session links, ephemeral
+  tool identifiers, temporary workspace references og generated
+  footers — disse skal ikke publiseres uten dokumentert nødvendighet.
 - Uavklart eller sensitivt materiale skal behandles lokalt eller i et
   eksplisitt private workspace. Det skal aldri pushes hit for å bli
   vurdert i etterkant.
@@ -336,3 +352,4 @@ Jakjo som produkt eller selskap (jf. seksjon 3).
 | 2026-08-06 | Founder godkjente SITE-001-baselinen for kontrollert aktivering. Livssyklus justert til å bli aktiv kun ved tilstedeværelse på `main`. Ingen endring av den offentlige nettsiden ble autorisert. Joint Website Change Gate (SITE-006) forblir NOT PASSED. | ACTIVE WHEN PRESENT ON `main` | Claude Code (SITE-001 activation-prep task) |
 | 2026-08-06 | Rettet motstridende candidate/active-semantikk funnet i endelig ChatGPT-governancegjennomgang (authority-blokk, formål og designretning refererte fortsatt til kandidat/venter-på-godkjenning-tilstand etter at livssyklusstatus var endret til aktiv). Ordlyd i authority, formål og designretning justert. Lifecycle Integrity Guard i `docs/SITE_WORKING_MODEL.md` referert. Ingen endring av den offentlige nettsiden ble autorisert. Joint Website Change Gate (SITE-006) forblir NOT PASSED. | ACTIVE WHEN PRESENT ON `main` | Claude Code (SITE-001 lifecycle-integrity task) |
 | 2026-08-06 | Founder autoriserte SITE-007 (Public Repository Disclosure Boundary). Public branches og PR-er presisert som offentlig eksponering fra push-tidspunktet. Pre-push Public Disclosure Integrity Guard etablert (`docs/SITE_WORKING_MODEL.md` §3.2). Patent application- og trade-secret-grensen presisert. Konkrete private Jakjo governance-paths redusert til generisk henvisning i normative public sections. Ingen endring av den offentlige nettsiden ble autorisert. Joint Website Change Gate (SITE-006) forblir NOT PASSED. | ACTIVE WHEN PRESENT ON `main` | Claude Code (SITE-007 public-disclosure-gate task) |
+| 2026-08-06 | Endelig ChatGPT-governancegjennomgang identifiserte et timing gap: pre-push/pre-merge-guarden dekket ikke eksplisitt public writes mellom disse tidspunktene (PR-body updates, comments, reviews, issues, attachments, logs, artifacts). Guarden styrket fra pre-push til pre-public-write, med stage-specific disclosure review for push, PR create/update, interaction og upload/publication, pluss samlet review før ready-for-review og merge. External session links, ephemeral tool identifiers og temporary workspace references lagt til i public artifact set-omfanget. Ingen kjent RED-lekkasje ble funnet. Ingen endring av den offentlige nettsiden ble autorisert. Joint Website Change Gate (SITE-006) forblir NOT PASSED. | ACTIVE WHEN PRESENT ON `main` | Claude Code (SITE-007 public-write-gate correction task) |

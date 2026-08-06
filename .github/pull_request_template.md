@@ -42,7 +42,15 @@ Evidensbasert PR-mal. Behold overskriftene. Fyll ut kort og konkret.
 
 ## Public disclosure classification
 
-<!-- Bekreft GREEN/YELLOW/RED classification for hele public artifact
+<!-- Confirm stage-specific Public Disclosure Integrity review before:
+     - push
+     - PR create/update
+     - comment/review/issue
+     - upload/publication
+     - ready-for-review
+     - merge
+
+     Bekreft GREEN/YELLOW/RED classification for hele public artifact
      set:
      - files
      - filenames
@@ -56,6 +64,10 @@ Evidensbasert PR-mal. Behold overskriftene. Fyll ut kort og konkret.
      - attachments
      - logs
      - artifacts
+     - external session links
+     - ephemeral tool identifiers
+     - temporary workspace references
+     - generated footers
 
      RED content must not be pushed.
      YELLOW requires recorded clearance.
@@ -91,8 +103,10 @@ Evidensbasert PR-mal. Behold overskriftene. Fyll ut kort og konkret.
      normative text, decision register, document map, changelog and PR body. -->
 - [ ] Lifecycle Integrity Guard passed when status or authority changed
 - [ ] Repository visibility confirmed as PUBLIC
-- [ ] Public Disclosure Integrity Guard passed before first push
-- [ ] Full public artifact set reviewed
+- [ ] Public Disclosure Integrity Guard passed before each public write
+- [ ] Full public artifact set re-reviewed before ready-for-review
+- [ ] Full public artifact set re-reviewed before merge
+- [ ] No external session links, ephemeral tool identifiers or temporary workspace references are present without documented necessity
 - [ ] No RED content is present
 - [ ] Required YELLOW clearance is recorded
 - [ ] Patent application and trade-secret boundary reviewed where relevant
