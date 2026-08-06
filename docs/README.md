@@ -13,7 +13,7 @@ alltid dokumentet det peker til.
 | Dokument | Formål | Status | Authority | Les når | Autoriserer ikke |
 |---|---|---|---|---|---|
 | `SITE_DECISION.md` | Site-lokal design- og implementeringsbaseline, inkl. SITE-###-beslutninger | CANDIDATE — REVIEW REQUIRED — NOT ACTIVE | Site-local candidate authority only | Før enhver site-endring, og alltid før en SITE-###-post refereres | Aktivering av noen SITE-###-post, eller noen endring av offentlig nettside |
-| `docs/SITE_WORKING_MODEL.md` | Arbeidsavtale for Jakob, ChatGPT, Claude Code og GitHub | ACTIVE WORKING AGREEMENT | Workflow authority only | Før en ny oppgave startes, og ved uklarhet om roller/rekkefølge | Endring av produkt, arkitektur eller offentlig nettside |
+| `docs/SITE_WORKING_MODEL.md` | Arbeidsavtale for Jakob, ChatGPT, Claude Code og GitHub | CANDIDATE — REVIEW REQUIRED — NOT ACTIVE | Workflow authority only | Før en ny oppgave startes, og ved uklarhet om roller/rekkefølge | Endring av produkt, arkitektur eller offentlig nettside |
 | `docs/README.md` (dette dokumentet) | Kompakt dokumentkart og lesehenvisning | NAVIGATOR | None | Ved oppstart av en oppgave, for å finne riktig dokument | Noe som helst — dette er kun en henvisning |
 | `.github/pull_request_template.md` | Evidensbasert PR-mal | ACTIVE TEMPLATE | Process only | Ved åpning av enhver PR mot denne repoen | Merge uten Founder-godkjenning |
 
@@ -21,7 +21,7 @@ alltid dokumentet det peker til.
 
 1. `SITE_DECISION.md`
 2. `docs/SITE_WORKING_MODEL.md`
-3. Gjeldende `main/index.html` (faktisk offentlig tilstand)
+3. Gjeldende `main/index.html` — godkjent kilde for neste deploy
 4. Relevant Jakjo Product Truth og claim-grenser
    (`Lekaste/Jakjo` `governance/JAKJO_PRODUCT_TRUTH.md`,
    `governance/competitive_position/POSITIONING_BOUNDARIES.md`) —
@@ -30,10 +30,14 @@ alltid dokumentet det peker til.
 
 ## Definisjon: offentlig sannhet
 
-Offentlig sannhet er kun det som er verifisert live-deployet på
-`vardeark.no`. `main`-branch er godkjent kilde for neste deploy, men
-er ikke i seg selv bevis på faktisk offentlig tilstand før deploy er
-verifisert.
+Verifisert live deploy på vardeark.no er faktisk offentlig tilstand.
+
+Dette kartet skiller mellom tre nivåer, som ikke må forveksles:
+
+- **Branch/PR** = kandidatmateriale. Ingen rettighet, ingen sannhet.
+- **`main`** = godkjent kilde for neste deploy. Ikke i seg selv bevis
+  på faktisk offentlig tilstand.
+- **Verifisert deploy** = faktisk offentlig tilstand på `vardeark.no`.
 
 ## Definisjon: kandidatmateriale
 

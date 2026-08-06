@@ -1,9 +1,12 @@
 # SITE WORKING MODEL
 
-Version: 1.0
+Version: 1.1
 Date: 2026-08-06
-Status: ACTIVE WORKING AGREEMENT
+Status: CANDIDATE — REVIEW REQUIRED — NOT ACTIVE
 Authority: Workflow authority only
+
+Activation requires explicit Founder approval and controlled merge to
+`main`.
 
 Dette dokumentet gir ingen produkt-, arkitektur-, juridisk- eller
 claim-autoritet. Det regulerer kun arbeidsflyten mellom Jakob, ChatGPT,
@@ -121,3 +124,4 @@ logges nedenfor. Ingen stille endring er tillatt.
 | Versjon | Dato | Endring |
 |---|---|---|
 | 1.0 | 2026-08-06 | Første versjon av arbeidsmodellen, opprettet som del av SITE-001-baseline. |
+| 1.1 | 2026-08-06 | Formaliserer Joint Website Change Gate (SITE-006) som forutsetning for enhver endring av den offentlige nettsideoverflaten. Formaliserer én aktiv website-branch som standard (SITE-005). Presiserer at status er CANDIDATE — REVIEW REQUIRED — NOT ACTIVE inntil eksplisitt Founder-godkjenning og kontrollert merge til `main`. Dette er versjonen som gjennomgås i PR #1. |

@@ -37,23 +37,30 @@ Gjelder ikke:
 
 ## 3. Authority and precedence
 
+En Founder-beslutning kan autorisere en konkret endring, men endrer
+ikke alene aktiv site-baseline. Aktiv baseline endres først når
+beslutningen er implementert, kontrollert og merget til `main`. En
+løs chat-uttalelse, et issue, en PR-kommentar, en Handoff eller en
+branch blir aldri stille til aktiv baseline-autoritet.
+
 Rekkefølge ved motstrid:
 
-1. Eksplisitt Founder-beslutning (skriftlig, i denne repoen eller i en
-   PR/issue knyttet til denne repoen).
-2. Dette dokumentet (`SITE_DECISION.md`), for aktiverte SITE-###-poster.
-3. `docs/SITE_WORKING_MODEL.md`, for arbeidsflyt mellom Jakob, ChatGPT,
-   Claude Code og GitHub.
-4. `docs/README.md`, som navigasjonskart — ikke selvstendig autoritet.
+1. Gjeldende Jakjo-autoritet, for alt som angår Jakjo som produkt,
+   identitet, krav, personvern, data, sikkerhet og IP
+   (`Lekaste/Jakjo` `governance/ARCHITECTURE_DECISIONS.md`,
+   `governance/JAKJO_PRODUCT_TRUTH.md`,
+   `governance/competitive_position/POSITIONING_BOUNDARIES.md`).
+2. Eksplisitt Founder-godkjente og kontrollert mergede site-beslutninger
+   på `main`.
+3. Aktive `SITE_DECISION.md`-poster på `main`.
+4. Aktiv arbeidsmodell (`docs/SITE_WORKING_MODEL.md`) på `main`.
+5. Navigasjonsdokumenter (`docs/README.md`) — ikke selvstendig
+   autoritet.
 
 Dette dokumentet har ingen autoritet over Jakjo-produktet, Jakjo sin
-arkitektur, eller Jakjo sine claim-grenser. For alt som gjelder Jakjo
-som produkt, identitet eller eksterne påstander, er
-`Lekaste/Jakjo` (`governance/ARCHITECTURE_DECISIONS.md`,
-`governance/JAKJO_PRODUCT_TRUTH.md`,
-`governance/competitive_position/POSITIONING_BOUNDARIES.md`) eneste
-autoritet. Dette dokumentet kan ikke overstyre, utvide eller gjenskape
-den autoriteten.
+arkitektur, eller Jakjo sine claim-grenser og dupliserer ikke
+Jakjo-governance. Dette dokumentet kan ikke overstyre, utvide eller
+gjenskape den autoriteten.
 
 ## 4. Current live baseline
 
