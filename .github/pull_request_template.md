@@ -64,3 +64,6 @@ Evidensbasert PR-mal. Behold overskriftene. Fyll ut kort og konkret.
 - [ ] Lenker til commit-SHA og Handoff er inkludert ovenfor
 - [ ] Explicit Founder approval is recorded before merge
 - [ ] Joint Website Change Gate status is explicitly recorded
+<!-- Confirm semantic consistency across Status, Authority, Purpose,
+     normative text, decision register, document map, changelog and PR body. -->
+- [ ] Lifecycle Integrity Guard passed when status or authority changed

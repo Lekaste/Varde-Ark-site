@@ -13,8 +13,8 @@ alltid dokumentet det peker til.
 
 | Dokument | Formål | Status | Authority | Les når | Autoriserer ikke |
 |---|---|---|---|---|---|
-| `SITE_DECISION.md` | Site-lokal design- og implementeringsbaseline, inkl. SITE-###-beslutninger | ACTIVE WHEN PRESENT ON `main` | Site-local candidate authority only | Før enhver site-endring, og alltid før en SITE-###-post refereres | Noen endring av offentlig nettside — SITE-006 forblir NOT PASSED |
-| `docs/SITE_WORKING_MODEL.md` | Arbeidsavtale for Jakob, ChatGPT, Claude Code og GitHub | ACTIVE WHEN PRESENT ON `main` | Workflow authority only | Før en ny oppgave startes, og ved uklarhet om roller/rekkefølge | Endring av produkt, arkitektur eller offentlig nettside |
+| `SITE_DECISION.md` | Site-lokal design- og implementeringsbaseline, inkl. SITE-###-beslutninger | ACTIVE WHEN PRESENT ON `main` | Site-local authority on `main`; candidate material elsewhere | Før enhver site-endring, og alltid før en SITE-###-post refereres | Noen endring av offentlig nettside — SITE-006 forblir NOT PASSED |
+| `docs/SITE_WORKING_MODEL.md` | Arbeidsavtale for Jakob, ChatGPT, Claude Code og GitHub | ACTIVE WHEN PRESENT ON `main` | Workflow authority on `main`; candidate material elsewhere | Før en ny oppgave startes, og ved uklarhet om roller/rekkefølge | Endring av produkt, arkitektur eller offentlig nettside |
 | `docs/README.md` (dette dokumentet) | Kompakt dokumentkart og lesehenvisning | ACTIVE NAVIGATOR WHEN PRESENT ON `main` | None | Ved oppstart av en oppgave, for å finne riktig dokument | Noe som helst — dette er kun en henvisning |
 | `.github/pull_request_template.md` | Evidensbasert PR-mal | ACTIVE PROCESS TEMPLATE WHEN PRESENT ON `main` | Process only | Ved åpning av enhver PR mot denne repoen | Merge uten Founder-godkjenning |
 

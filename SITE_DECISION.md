@@ -5,11 +5,9 @@ Formål: Site-lokal design- og implementeringsbaseline for Varde Ark.
 Status: ACTIVE WHEN PRESENT ON `main`
 
 Authority:
-Site-local candidate authority only.
+Site-local authority when present on `main`.
+Candidate material everywhere else.
 No Jakjo runtime, architecture, product, legal, or claim authority.
-This document has site-local authority only when present on `main`.
-A branch, PR, draft, Handoff, or chat statement remains candidate
-material and has no active baseline authority.
 
 Dato: 2026-08-06
 
@@ -17,15 +15,18 @@ Dato: 2026-08-06
 
 ## 1. Purpose
 
-Dette dokumentet er den site-lokale kandidat-baselinen for design,
+Dette dokumentet er den site-lokale baselinen for design,
 informasjonsarkitektur, teknisk standard og endringsstyring for
 Varde Ark-nettstedet (`Lekaste/Varde-Ark-site`).
 
-Dokumentet gir ikke selv rett til å endre den offentlige nettsiden. Det
-etablerer et sett med nummererte SITE-###-kandidatbeslutninger som må
-godkjennes eksplisitt av Founder før de kan aktiveres, og som uansett
-krever at Joint Website Change Gate (SITE-006) er bestått for den
-konkrete, avgrensede endringen.
+SITE-001 til SITE-006 er Founder-godkjent for kontrollert aktivering
+og har site-lokal autoritet bare når dette dokumentet er til stede på
+`main`. På branch eller i PR er dokumentet kandidatmateriale.
+
+Dette dokumentet gir ikke selv rett til å endre den offentlige
+nettsiden. Joint Website Change Gate (SITE-006) må uansett være
+bestått for den konkrete, avgrensede endringen før noen endring av
+den offentlige nettsideoverflaten kan skje.
 
 ## 2. Scope
 
@@ -85,7 +86,7 @@ site-endring inntil en ny, godkjent baseline erstatter den.
 
 ## 5. Design direction
 
-Kandidatretning: behold den minimalistiske, rolige visuelle
+Gjeldende site-retning når dokumentet er aktivt på `main`: behold den minimalistiske, rolige visuelle
 identiteten som allerede finnes på `main` (sentrert typografi, dempet
 fargepalett, stillestående layout uten navigasjon eller innhold utover
 tittel og status). Endringer i visuell retning skal være evolusjonære,
@@ -164,7 +165,9 @@ En site-endring er ferdig når:
 - Joint Website Change Gate er eksplisitt passert for den konkrete
   endringen (kun relevant for endringer som faktisk berører den
   offentlige nettsideoverflaten);
-- Founder har gitt eksplisitt godkjenning før merge.
+- Founder har gitt eksplisitt godkjenning før merge;
+- Enhver lifecycle- eller authority-endring har bestått Lifecycle
+  Integrity Guard i `docs/SITE_WORKING_MODEL.md`.
 
 ## 12. Stable decision register
 
@@ -267,3 +270,4 @@ Jakjo som produkt eller selskap (jf. seksjon 3).
 |---|---|---|---|
 | 2026-08-06 | Opprettet dokument med SITE-001 til SITE-006 som candidate-beslutninger. Ingen aktivering. | CANDIDATE — REVIEW REQUIRED — NOT ACTIVE | Claude Code (SITE-001 baseline task) |
 | 2026-08-06 | Founder godkjente SITE-001-baselinen for kontrollert aktivering. Livssyklus justert til å bli aktiv kun ved tilstedeværelse på `main`. Ingen endring av den offentlige nettsiden ble autorisert. Joint Website Change Gate (SITE-006) forblir NOT PASSED. | ACTIVE WHEN PRESENT ON `main` | Claude Code (SITE-001 activation-prep task) |
+| 2026-08-06 | Rettet motstridende candidate/active-semantikk funnet i endelig ChatGPT-governancegjennomgang (authority-blokk, formål og designretning refererte fortsatt til kandidat/venter-på-godkjenning-tilstand etter at livssyklusstatus var endret til aktiv). Ordlyd i authority, formål og designretning justert. Lifecycle Integrity Guard i `docs/SITE_WORKING_MODEL.md` referert. Ingen endring av den offentlige nettsiden ble autorisert. Joint Website Change Gate (SITE-006) forblir NOT PASSED. | ACTIVE WHEN PRESENT ON `main` | Claude Code (SITE-001 lifecycle-integrity task) |
