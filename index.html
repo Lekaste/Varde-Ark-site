@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="nb">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="color-scheme" content="light">
   <meta name="theme-color" content="#f5f3ee">
-  <title>Varde Ark — Pre-launch</title>
+  <title>Varde Ark — Under utvikling</title>
 
   <style>
     :root {
@@ -32,7 +32,8 @@
       min-height: 100vh;
       min-height: 100svh;
       margin: 0;
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: auto;
       background: var(--background);
       color: var(--foreground);
       text-rendering: optimizeLegibility;
@@ -72,6 +73,19 @@
     .identity {
       width: min(100%, 90rem);
       text-align: center;
+      animation: entrance 550ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    @keyframes entrance {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     h1 {
@@ -87,6 +101,40 @@
       font-weight: 400;
       line-height: 0.92;
       letter-spacing: -0.055em;
+      text-wrap: balance;
+    }
+
+    .lede {
+      max-width: 38rem;
+      margin: clamp(1rem, 3vw, 1.75rem) auto 0;
+      color: var(--foreground);
+      font-family:
+        Inter,
+        ui-sans-serif,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      font-size: clamp(1rem, 2.2vw, 1.3rem);
+      font-weight: 400;
+      line-height: 1.5;
+      text-wrap: balance;
+    }
+
+    .principle {
+      max-width: 36rem;
+      margin: clamp(0.4rem, 1.2vw, 0.6rem) auto 0;
+      color: var(--muted);
+      font-family:
+        Inter,
+        ui-sans-serif,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      font-size: clamp(0.85rem, 1.7vw, 1.02rem);
+      font-weight: 400;
+      line-height: 1.5;
       text-wrap: balance;
     }
 
@@ -145,6 +193,12 @@
       body::before {
         animation: none;
       }
+
+      .identity {
+        animation: none;
+        opacity: 1;
+        transform: none;
+      }
     }
 
     @media (forced-colors: active) {
@@ -163,7 +217,9 @@
   <main>
     <section class="identity" aria-labelledby="site-name">
       <h1 id="site-name">Varde Ark</h1>
-      <p class="status">Pre-launch</p>
+      <p class="lede">Utvikler korte, sporbare beslutningsgrunnlag for operativ ledelse.</p>
+      <p class="principle">Fra spredt rapportering til et avgrenset grunnlag å handle på — med mennesket fortsatt ansvarlig for beslutningen.</p>
+      <p class="status">Under utvikling</p>
     </section>
   </main>
 </body>
