@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="color-scheme" content="light">
   <meta name="theme-color" content="#f5f3ee">
-  <title>Varde Ark — Pre-launch</title>
+  <title>Varde Ark — Under utvikling</title>
 
   <style>
     :root {
@@ -73,6 +73,19 @@
     .identity {
       width: min(100%, 90rem);
       text-align: center;
+      animation: entrance 550ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    @keyframes entrance {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     h1 {
@@ -109,7 +122,7 @@
     }
 
     .principle {
-      max-width: 34rem;
+      max-width: 36rem;
       margin: clamp(0.4rem, 1.2vw, 0.6rem) auto 0;
       color: var(--muted);
       font-family:
@@ -180,6 +193,12 @@
       body::before {
         animation: none;
       }
+
+      .identity {
+        animation: none;
+        opacity: 1;
+        transform: none;
+      }
     }
 
     @media (forced-colors: active) {
@@ -198,9 +217,9 @@
   <main>
     <section class="identity" aria-labelledby="site-name">
       <h1 id="site-name">Varde Ark</h1>
-      <p class="lede">Fra spredt rapportering til et kort, sporbart beslutningsgrunnlag.</p>
-      <p class="principle">Kompleksiteten komprimeres. Beslutningsansvaret gjør ikke.</p>
-      <p class="status">Pre-launch</p>
+      <p class="lede">Utvikler korte, sporbare beslutningsgrunnlag for operativ ledelse.</p>
+      <p class="principle">Fra spredt rapportering til et avgrenset grunnlag å handle på — med mennesket fortsatt ansvarlig for beslutningen.</p>
+      <p class="status">Under utvikling</p>
     </section>
   </main>
 </body>
