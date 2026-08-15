@@ -349,6 +349,14 @@
       text-wrap: pretty;
     }
 
+    .reading-surface .body-copy {
+      max-width: 30rem;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+      line-height: 1.65;
+    }
+
     .reading-surface .signal {
       max-width: 24ch;
       margin: clamp(1.5rem, 3.5vw, 2.25rem) auto 0;
@@ -519,43 +527,6 @@
 
     /* ---------- Status surface ---------- */
 
-    .status-grid {
-      margin: clamp(1.5rem, 4vw, 2rem) 0 0;
-      padding: 0;
-      display: grid;
-      gap: 0.6rem;
-    }
-
-    .status-row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: baseline;
-      gap: 0.3rem 1rem;
-      padding-bottom: 0.6rem;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .status-row dt {
-      min-width: 0;
-      flex: 1 1 auto;
-      color: var(--foreground);
-      font-size: clamp(0.85rem, 1.6vw, 0.95rem);
-      font-weight: 620;
-      text-align: left;
-    }
-
-    .status-row dd {
-      margin: 0 0 0 auto;
-      flex: 0 0 auto;
-      max-width: 100%;
-      color: var(--muted);
-      font-size: clamp(0.8rem, 1.5vw, 0.88rem);
-      font-weight: 560;
-      letter-spacing: 0.03em;
-      text-align: right;
-      white-space: nowrap;
-    }
-
     .norway-line {
       display: flex;
       align-items: center;
@@ -608,15 +579,6 @@
 
       .reading-surface .screen-cue {
         margin-top: 0.55rem;
-      }
-
-      .status-grid {
-        margin-top: 0.28rem;
-        gap: 0.12rem;
-      }
-
-      .status-row {
-        padding-bottom: 0.12rem;
       }
 
       .closing {
@@ -708,8 +670,8 @@
       <div class="reading-surface-inner">
         <p class="eyebrow">Kort fortalt</p>
         <h2 id="kort-fortalt-heading">Analysekapasiteten øker. Lederens oppmerksomhet gjør ikke.</h2>
-        <p>Varde Ark arbeider med laget etter rapporteringen: et kortere, avgrenset og etterprøvbart beslutningsgrunnlag for det som faktisk trenger oppmerksomhet.</p>
-        <p>Målet er ikke flere analyser. Målet er mindre avstand mellom et godt grunnlag og en menneskelig beslutning.</p>
+        <p class="body-copy">Varde Ark arbeider med laget etter rapporteringen: et kortere, avgrenset og etterprøvbart beslutningsgrunnlag for det som faktisk trenger oppmerksomhet.</p>
+        <p class="body-copy">Målet er ikke flere analyser. Målet er mindre avstand mellom et godt grunnlag og en menneskelig beslutning.</p>
         <p class="signal">Mer informasjon er nyttig. Mer beslutningsstøy er det ikke.</p>
         <p class="screen-cue">Fortsett når du er klar <span class="arrow" aria-hidden="true">↓</span></p>
       </div>
@@ -767,26 +729,7 @@
           </svg>
           Utviklet i Norge, med vekt på kontroll, sporbarhet og tydelig ansvar.
         </p>
-        <dl class="status-grid">
-          <div class="status-row">
-            <dt>Produktgrense</dt>
-            <dd>Definert</dd>
-          </div>
-          <div class="status-row">
-            <dt>Kontrollprinsipper</dt>
-            <dd>Definert</dd>
-          </div>
-          <div class="status-row">
-            <dt>Kundeeffekt</dt>
-            <dd>Ikke dokumentert</dd>
-          </div>
-          <div class="status-row">
-            <dt>Produksjonsklarhet</dt>
-            <dd>Ikke dokumentert</dd>
-          </div>
-        </dl>
-        <p class="closing">Påstander oppgraderes først når evidensgrunnlaget gjør det forsvarlig. Ingen lanseringsdato kommuniseres her.</p>
-        <p class="screen-cue">Du har hele statusbildet på denne flaten.</p>
+        <p class="closing">Status oppdateres når dokumentert grunnlag gjør det forsvarlig.</p>
         <a class="quiet-action" href="#top"><span class="arrow" aria-hidden="true">↑</span> Til toppen</a>
       </div>
     </section>
