@@ -341,20 +341,24 @@
       text-wrap: balance;
     }
 
+    /* Kort fortalt headline: deliberate semantic line rhythm, not
+       browser-determined auto-wrap. Scoped to this heading only so the
+       Status heading keeps its default max-width/wrap behaviour. */
+    #kort-fortalt-heading {
+      max-width: none;
+      width: 100%;
+    }
+
+    #kort-fortalt-heading .editorial-line {
+      display: block;
+    }
+
     .reading-surface p {
       margin: 1rem 0 0;
       color: var(--foreground);
       font-size: clamp(0.95rem, 1.9vw, 1.08rem);
       line-height: 1.6;
       text-wrap: pretty;
-    }
-
-    .reading-surface .body-copy {
-      max-width: 30rem;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: left;
-      line-height: 1.65;
     }
 
     .reading-surface .signal {
@@ -669,9 +673,9 @@
     <section class="reading-surface" id="kort-fortalt" aria-labelledby="kort-fortalt-heading">
       <div class="reading-surface-inner">
         <p class="eyebrow">Kort fortalt</p>
-        <h2 id="kort-fortalt-heading">Analysekapasiteten øker. Lederens oppmerksomhet gjør ikke.</h2>
-        <p class="body-copy">Varde Ark arbeider med laget etter rapporteringen: et kortere, avgrenset og etterprøvbart beslutningsgrunnlag for det som faktisk trenger oppmerksomhet.</p>
-        <p class="body-copy">Målet er ikke flere analyser. Målet er mindre avstand mellom et godt grunnlag og en menneskelig beslutning.</p>
+        <h2 id="kort-fortalt-heading"><span class="editorial-line">Analysekapasiteten øker.</span><span class="editorial-line">Lederens oppmerksomhet</span><span class="editorial-line">gjør ikke.</span></h2>
+        <p>Varde Ark arbeider med laget etter rapporteringen: et kortere, avgrenset og etterprøvbart beslutningsgrunnlag for det som faktisk trenger oppmerksomhet.</p>
+        <p>Målet er ikke flere analyser. Målet er mindre avstand mellom et godt grunnlag og en menneskelig beslutning.</p>
         <p class="signal">Mer informasjon er nyttig. Mer beslutningsstøy er det ikke.</p>
         <p class="screen-cue">Fortsett når du er klar <span class="arrow" aria-hidden="true">↓</span></p>
       </div>
