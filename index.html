@@ -30,6 +30,7 @@
       --foreground: #171816;
       --muted: #696b66;
       --line: rgba(23, 24, 22, 0.14);
+      --line-strong: rgba(23, 24, 22, 0.26);
       --page-padding: clamp(1.5rem, 5vw, 5rem);
       --section-padding: clamp(2.5rem, 7vw, 4.5rem);
       --title-size: clamp(3.4rem, 11vw, 9rem);
@@ -168,8 +169,10 @@
 
     .status {
       display: inline-flex;
+      flex-wrap: wrap;
       align-items: center;
-      gap: 0.85rem;
+      justify-content: center;
+      gap: 0.55rem 0.8rem;
       margin: clamp(1.6rem, 3.6vw, 2.6rem) 0 0;
       color: var(--muted);
       font-size: clamp(0.68rem, 1.2vw, 0.78rem);
@@ -184,6 +187,26 @@
       width: 2.75rem;
       height: 1px;
       background: var(--line);
+    }
+
+    .status-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 1rem 0.3rem;
+      color: inherit;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: none;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: color 200ms ease, border-color 200ms ease;
+    }
+
+    .status-link:hover,
+    .status-link:focus-visible {
+      color: var(--foreground);
+      border-color: currentColor;
     }
 
     .origin {
@@ -202,15 +225,26 @@
       flex: none;
       display: block;
       border-radius: 1px;
+      box-shadow: 0 0 0 1px rgba(23, 24, 22, 0.08);
     }
 
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
+    .primary-action {
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 0.5rem 1.75rem;
-      margin: clamp(2rem, 5vw, 3rem) 0 0;
+      gap: 0.4rem;
+      margin-top: clamp(1.6rem, 4vw, 2.25rem);
+      padding: 0.85rem 0.4rem;
+      color: var(--foreground);
+      font-size: clamp(0.85rem, 1.6vw, 0.95rem);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid currentColor;
+      transition: opacity 200ms ease;
+    }
+
+    .primary-action:hover,
+    .primary-action:focus-visible {
+      opacity: 0.65;
     }
 
     .quiet-action {
@@ -232,7 +266,9 @@
       border-color: var(--line);
     }
 
-    .quiet-action .arrow {
+    .quiet-action .arrow,
+    .primary-action .arrow,
+    .status-link .arrow {
       transition: transform 200ms ease;
     }
 
@@ -263,12 +299,17 @@
     /* ---------- Reading surfaces (Kort fortalt / Status) ---------- */
 
     .reading-surface {
+      min-height: 100vh;
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      align-items: center;
       padding: var(--section-padding) max(var(--page-padding), env(safe-area-inset-right)) var(--section-padding) max(var(--page-padding), env(safe-area-inset-left));
       border-top: 1px solid var(--line);
     }
 
     .reading-surface-inner {
-      max-width: 34rem;
+      width: min(100%, 34rem);
       margin: 0 auto;
       text-align: center;
     }
@@ -284,7 +325,8 @@
     }
 
     h2 {
-      margin: 0.9rem 0 0;
+      max-width: 15ch;
+      margin: 0.9rem auto 0;
       font-family:
         "Iowan Old Style",
         "Palatino Linotype",
@@ -292,10 +334,10 @@
         Palatino,
         Georgia,
         serif;
-      font-size: clamp(1.6rem, 4.2vw, 2.4rem);
+      font-size: clamp(1.9rem, 4.8vw, 3.4rem);
       font-weight: 400;
-      line-height: 1.15;
-      letter-spacing: -0.01em;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
       text-wrap: balance;
     }
 
@@ -308,10 +350,32 @@
     }
 
     .reading-surface .signal {
-      margin-top: 1.4rem;
+      max-width: 24ch;
+      margin: clamp(1.5rem, 3.5vw, 2.25rem) auto 0;
+      padding: clamp(0.9rem, 2.2vw, 1.35rem) 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      color: var(--foreground);
+      font-family:
+        "Iowan Old Style",
+        "Palatino Linotype",
+        "Book Antiqua",
+        Palatino,
+        Georgia,
+        serif;
+      font-size: clamp(1.15rem, 2.8vw, 1.7rem);
+      font-weight: 400;
+      line-height: 1.22;
+      letter-spacing: -0.01em;
+      text-wrap: balance;
+    }
+
+    .reading-surface .screen-cue {
+      margin-top: clamp(1.4rem, 3vw, 2rem);
       color: var(--muted);
-      font-size: clamp(0.85rem, 1.6vw, 0.95rem);
-      font-style: italic;
+      font-size: clamp(0.72rem, 1.3vw, 0.8rem);
+      font-weight: 500;
+      letter-spacing: 0.02em;
     }
 
     /* ---------- Deeper exploration (tabs) ---------- */
@@ -322,47 +386,61 @@
     }
 
     .deeper-inner {
-      max-width: 40rem;
+      max-width: 44rem;
       margin: 0 auto;
     }
 
     .tablist {
-      display: flex;
-      justify-content: center;
-      gap: clamp(0.4rem, 2vw, 1rem);
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.55rem;
       margin: 0 0 clamp(1.5rem, 4vw, 2.25rem);
-      flex-wrap: wrap;
     }
 
     .tab {
       appearance: none;
-      background: none;
-      border: none;
-      border-bottom: 2px solid transparent;
+      border: 1px solid var(--line);
+      border-radius: 999px;
       margin: 0;
-      padding: 0.8rem 0.15rem;
+      padding: 0.85rem 1rem;
+      background: rgba(255, 255, 255, 0.4);
       color: var(--muted);
       font-family: inherit;
-      font-size: clamp(0.85rem, 1.7vw, 0.98rem);
-      font-weight: 500;
+      font-size: clamp(0.8rem, 1.6vw, 0.92rem);
+      font-weight: 600;
+      line-height: 1.1;
       cursor: pointer;
-      transition: color 200ms ease, border-color 200ms ease;
-    }
-
-    .tab + .tab {
-      margin-left: clamp(1rem, 3vw, 1.75rem);
+      transition: background 200ms ease, color 200ms ease, border-color 200ms ease;
     }
 
     .tab[aria-selected="true"] {
-      color: var(--foreground);
+      background: var(--foreground);
+      color: var(--background);
       border-color: var(--foreground);
     }
 
     .tab:hover {
-      color: var(--foreground);
+      border-color: var(--line-strong);
+    }
+
+    .tab[aria-selected="true"]:hover {
+      border-color: var(--foreground);
+    }
+
+    @media (max-width: 40rem) {
+      .tablist {
+        grid-template-columns: 1fr;
+      }
     }
 
     .tab-block {
+      margin-top: 1rem;
+      padding: clamp(1.35rem, 3vw, 2.1rem);
+      border: 1px solid var(--line);
+      border-radius: 1.25rem;
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       text-align: center;
     }
 
@@ -377,7 +455,8 @@
     }
 
     h3 {
-      margin: 0.9rem 0 0;
+      max-width: 22ch;
+      margin: 0.9rem auto 0;
       font-family:
         "Iowan Old Style",
         "Palatino Linotype",
@@ -385,10 +464,10 @@
         Palatino,
         Georgia,
         serif;
-      font-size: clamp(1.25rem, 3vw, 1.6rem);
+      font-size: clamp(1.4rem, 3.4vw, 2rem);
       font-weight: 400;
-      line-height: 1.2;
-      letter-spacing: -0.01em;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
       text-wrap: balance;
     }
 
@@ -411,7 +490,13 @@
       text-align: center;
     }
 
+    .boundary {
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
     .boundary h3 {
+      max-width: none;
       font-family: inherit;
       font-size: clamp(0.85rem, 1.6vw, 0.95rem);
       font-weight: 600;
@@ -455,7 +540,7 @@
       flex: 1 1 auto;
       color: var(--foreground);
       font-size: clamp(0.85rem, 1.6vw, 0.95rem);
-      font-weight: 500;
+      font-weight: 620;
       text-align: left;
     }
 
@@ -464,7 +549,9 @@
       flex: 0 0 auto;
       max-width: 100%;
       color: var(--muted);
-      font-size: clamp(0.85rem, 1.6vw, 0.95rem);
+      font-size: clamp(0.8rem, 1.5vw, 0.88rem);
+      font-weight: 560;
+      letter-spacing: 0.03em;
       text-align: right;
       white-space: nowrap;
     }
@@ -502,34 +589,43 @@
 
     @media (max-height: 640px) {
       .reading-surface {
-        padding-top: 1.4rem;
-        padding-bottom: 1.4rem;
+        padding-top: 0.9rem;
+        padding-bottom: 0.9rem;
       }
 
       .reading-surface p {
-        margin-top: 0.6rem;
+        margin-top: 0.4rem;
       }
 
       h2 {
-        margin-top: 0.5rem;
+        margin-top: 0.25rem;
+      }
+
+      .reading-surface .signal {
+        margin-top: 0.75rem;
+        padding: 0.4rem 0;
+      }
+
+      .reading-surface .screen-cue {
+        margin-top: 0.55rem;
       }
 
       .status-grid {
-        margin-top: 0.85rem;
-        gap: 0.3rem;
+        margin-top: 0.45rem;
+        gap: 0.15rem;
       }
 
       .status-row {
-        padding-bottom: 0.3rem;
+        padding-bottom: 0.15rem;
       }
 
       .closing {
-        margin-top: 0.85rem;
-        padding-top: 0.8rem;
+        margin-top: 0.45rem;
+        padding-top: 0.45rem;
       }
 
       .status-surface .quiet-action {
-        margin-top: 0.5rem;
+        margin-top: 0.25rem;
       }
     }
 
@@ -560,12 +656,20 @@
         background: currentColor;
       }
 
+      .tab-block {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+      }
+
       .tab {
-        border-bottom-color: Canvas;
+        background: Canvas;
+        color: CanvasText;
+        border-color: ButtonText;
       }
 
       .tab[aria-selected="true"] {
-        border-bottom-color: currentColor;
+        border-width: 3px;
+        text-decoration: underline;
       }
 
       :focus-visible {
@@ -582,7 +686,10 @@
         <h1 id="site-name">Varde Ark</h1>
         <p class="lede">Utvikler korte, sporbare beslutningsgrunnlag for operativ ledelse.</p>
         <p class="principle">Når rapportering og analyse blir mer omfattende, må veien til beslutning bli enklere.</p>
-        <p class="status">Under utvikling</p>
+        <p class="status">
+          <span>Under utvikling</span>
+          <a class="status-link" href="#status">Se status <span class="arrow" aria-hidden="true">↓</span></a>
+        </p>
         <p class="origin">
           <svg class="flag" viewBox="0 0 22 16" width="16" height="12" aria-hidden="true" focusable="false">
             <rect width="22" height="16" fill="#EF2B2D"></rect>
@@ -593,10 +700,7 @@
           </svg>
           Utviklet i Norge
         </p>
-        <nav class="actions" aria-label="Les mer på denne siden">
-          <a class="quiet-action" href="#kort-fortalt">Se litt mer <span class="arrow" aria-hidden="true">↓</span></a>
-          <a class="quiet-action" href="#status">Se status <span class="arrow" aria-hidden="true">↓</span></a>
-        </nav>
+        <a class="primary-action" href="#kort-fortalt">Se litt mer <span class="arrow" aria-hidden="true">↓</span></a>
       </div>
     </section>
 
@@ -607,6 +711,7 @@
         <p>Varde Ark arbeider med laget etter rapporteringen: et kortere, avgrenset og etterprøvbart beslutningsgrunnlag for det som faktisk trenger oppmerksomhet.</p>
         <p>Målet er ikke flere analyser. Målet er mindre avstand mellom et godt grunnlag og en menneskelig beslutning.</p>
         <p class="signal">Mer informasjon er nyttig. Mer beslutningsstøy er det ikke.</p>
+        <p class="screen-cue">Fortsett når du er klar <span class="arrow" aria-hidden="true">↓</span></p>
       </div>
     </section>
 
@@ -681,6 +786,7 @@
           </div>
         </dl>
         <p class="closing">Påstander oppgraderes først når evidensgrunnlaget gjør det forsvarlig. Ingen lanseringsdato kommuniseres her.</p>
+        <p class="screen-cue">Du har hele statusbildet på denne flaten.</p>
         <a class="quiet-action" href="#top"><span class="arrow" aria-hidden="true">↑</span> Til toppen</a>
       </div>
     </section>
