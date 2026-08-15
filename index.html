@@ -365,7 +365,7 @@
     }
 
     .reading-surface .signal {
-      max-width: 24ch;
+      max-width: 32ch;
       margin: clamp(1.5rem, 3.5vw, 2.25rem) auto 0;
       padding: clamp(0.9rem, 2.2vw, 1.35rem) 0;
       border-top: 1px solid var(--line);
@@ -391,6 +391,27 @@
       font-size: clamp(0.72rem, 1.3vw, 0.8rem);
       font-weight: 500;
       letter-spacing: 0.02em;
+    }
+
+    /* ---------- Context signal (quiet transition, not a reading surface) ---------- */
+
+    .context-signal {
+      padding: clamp(1.75rem, 4vw, 2.5rem) max(var(--page-padding), env(safe-area-inset-right)) clamp(1.75rem, 4vw, 2.5rem) max(var(--page-padding), env(safe-area-inset-left));
+      border-top: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .context-signal-inner {
+      width: min(100%, 28rem);
+      margin: 0 auto;
+    }
+
+    .context-signal p {
+      margin: 0.6rem 0 0;
+      color: var(--muted);
+      font-size: clamp(0.85rem, 1.6vw, 0.95rem);
+      line-height: 1.6;
+      text-wrap: pretty;
     }
 
     /* ---------- Deeper exploration (tabs) ---------- */
@@ -684,6 +705,13 @@
         <p class="signal"><span class="editorial-line">Mer informasjon er nyttig.</span>
           <span class="editorial-line">Mer beslutningsstøy er det ikke.</span></p>
         <p class="screen-cue">Fortsett når du er klar <span class="arrow" aria-hidden="true">↓</span></p>
+      </div>
+    </section>
+
+    <section class="context-signal" aria-label="Første anvendelsesområde">
+      <div class="context-signal-inner">
+        <p class="eyebrow">Første anvendelsesområde</p>
+        <p>Varde Ark utvikles med utgangspunkt i gjentakende operativ rapportering i hotellvirksomhet.</p>
       </div>
     </section>
 
