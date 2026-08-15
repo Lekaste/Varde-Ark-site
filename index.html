@@ -349,7 +349,10 @@
       width: 100%;
     }
 
-    #kort-fortalt-heading .editorial-line {
+    /* Forces a conceptual text unit onto its own line without breaking
+       the underlying text into visually separate elements. Reused for
+       the headline and the signal quote. */
+    .editorial-line {
       display: block;
     }
 
@@ -673,10 +676,13 @@
     <section class="reading-surface" id="kort-fortalt" aria-labelledby="kort-fortalt-heading">
       <div class="reading-surface-inner">
         <p class="eyebrow">Kort fortalt</p>
-        <h2 id="kort-fortalt-heading"><span class="editorial-line">Analysekapasiteten øker.</span><span class="editorial-line">Lederens oppmerksomhet</span><span class="editorial-line">gjør ikke.</span></h2>
+        <h2 id="kort-fortalt-heading"><span class="editorial-line">Analysekapasiteten øker.</span>
+          <span class="editorial-line">Lederens oppmerksomhet</span>
+          <span class="editorial-line">gjør ikke.</span></h2>
         <p>Varde Ark arbeider med laget etter rapporteringen: et kortere, avgrenset og etterprøvbart beslutningsgrunnlag for det som faktisk trenger oppmerksomhet.</p>
         <p>Målet er ikke flere analyser. Målet er mindre avstand mellom et godt grunnlag og en menneskelig beslutning.</p>
-        <p class="signal">Mer informasjon er nyttig. Mer beslutningsstøy er det ikke.</p>
+        <p class="signal"><span class="editorial-line">Mer informasjon er nyttig.</span>
+          <span class="editorial-line">Mer beslutningsstøy er det ikke.</span></p>
         <p class="screen-cue">Fortsett når du er klar <span class="arrow" aria-hidden="true">↓</span></p>
       </div>
     </section>
