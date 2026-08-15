@@ -5,7 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="color-scheme" content="light">
   <meta name="theme-color" content="#f5f3ee">
-  <title>Varde Ark — Under utvikling</title>
+  <title>Varde Ark — Sporbare beslutningsgrunnlag for operativ ledelse</title>
+  <meta name="description" content="Varde Ark utvikler korte, sporbare beslutningsgrunnlag for operativ ledelse, med mindre avstand mellom rapportering og menneskelig beslutning.">
+  <link rel="canonical" href="https://vardeark.no/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://vardeark.no/">
+  <meta property="og:title" content="Varde Ark — Sporbare beslutningsgrunnlag for operativ ledelse">
+  <meta property="og:description" content="Varde Ark utvikler korte, sporbare beslutningsgrunnlag for operativ ledelse, med mindre avstand mellom rapportering og menneskelig beslutning.">
+  <meta property="og:locale" content="nb_NO">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Varde Ark",
+    "url": "https://vardeark.no/"
+  }
+  </script>
 
   <style>
     :root {
@@ -13,7 +30,9 @@
       --foreground: #171816;
       --muted: #696b66;
       --line: rgba(23, 24, 22, 0.14);
+      --line-strong: rgba(23, 24, 22, 0.26);
       --page-padding: clamp(1.5rem, 5vw, 5rem);
+      --section-padding: clamp(2.5rem, 7vw, 4.5rem);
       --title-size: clamp(3.4rem, 11vw, 9rem);
     }
 
@@ -26,6 +45,7 @@
     html {
       min-height: 100%;
       background: var(--background);
+      scroll-behavior: smooth;
     }
 
     body {
@@ -38,6 +58,14 @@
       color: var(--foreground);
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
+      overflow-wrap: break-word;
+      font-family:
+        Inter,
+        ui-sans-serif,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
     }
 
     body::before {
@@ -59,6 +87,21 @@
     main {
       position: relative;
       isolation: isolate;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--foreground);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    /* ---------- Hero ---------- */
+
+    .hero {
       display: grid;
       min-height: 100vh;
       min-height: 100svh;
@@ -108,13 +151,6 @@
       max-width: 38rem;
       margin: clamp(1rem, 3vw, 1.75rem) auto 0;
       color: var(--foreground);
-      font-family:
-        Inter,
-        ui-sans-serif,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
       font-size: clamp(1rem, 2.2vw, 1.3rem);
       font-weight: 400;
       line-height: 1.5;
@@ -125,13 +161,6 @@
       max-width: 36rem;
       margin: clamp(0.4rem, 1.2vw, 0.6rem) auto 0;
       color: var(--muted);
-      font-family:
-        Inter,
-        ui-sans-serif,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
       font-size: clamp(0.85rem, 1.7vw, 1.02rem);
       font-weight: 400;
       line-height: 1.5;
@@ -140,17 +169,12 @@
 
     .status {
       display: inline-flex;
+      flex-wrap: wrap;
       align-items: center;
-      gap: 0.85rem;
-      margin: clamp(1.8rem, 4vw, 3rem) 0 0;
+      justify-content: center;
+      gap: 0.55rem 0.8rem;
+      margin: clamp(1.6rem, 3.6vw, 2.6rem) 0 0;
       color: var(--muted);
-      font-family:
-        Inter,
-        ui-sans-serif,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
       font-size: clamp(0.68rem, 1.2vw, 0.78rem);
       font-weight: 600;
       line-height: 1;
@@ -163,6 +187,89 @@
       width: 2.75rem;
       height: 1px;
       background: var(--line);
+    }
+
+    .status-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 1rem 0.3rem;
+      color: inherit;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: none;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: color 200ms ease, border-color 200ms ease;
+    }
+
+    .status-link:hover,
+    .status-link:focus-visible {
+      color: var(--foreground);
+      border-color: currentColor;
+    }
+
+    .origin {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin: 0.85rem 0 0;
+      color: var(--muted);
+      font-size: clamp(0.72rem, 1.3vw, 0.82rem);
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .origin .flag {
+      flex: none;
+      display: block;
+      border-radius: 1px;
+      box-shadow: 0 0 0 1px rgba(23, 24, 22, 0.08);
+    }
+
+    .primary-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: clamp(1.6rem, 4vw, 2.25rem);
+      padding: 0.85rem 0.4rem;
+      color: var(--foreground);
+      font-size: clamp(0.85rem, 1.6vw, 0.95rem);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid currentColor;
+      transition: opacity 200ms ease;
+    }
+
+    .primary-action:hover,
+    .primary-action:focus-visible {
+      opacity: 0.65;
+    }
+
+    .quiet-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.85rem 0.4rem;
+      color: var(--muted);
+      font-size: clamp(0.82rem, 1.5vw, 0.92rem);
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: color 200ms ease, border-color 200ms ease;
+    }
+
+    .quiet-action:hover,
+    .quiet-action:focus-visible {
+      color: var(--foreground);
+      border-color: var(--line);
+    }
+
+    .quiet-action .arrow,
+    .primary-action .arrow,
+    .status-link .arrow {
+      transition: transform 200ms ease;
     }
 
     @keyframes ambient-shift {
@@ -189,7 +296,336 @@
       }
     }
 
+    /* ---------- Reading surfaces (Kort fortalt / Status) ---------- */
+
+    .reading-surface {
+      min-height: 100vh;
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      align-items: center;
+      padding: var(--section-padding) max(var(--page-padding), env(safe-area-inset-right)) var(--section-padding) max(var(--page-padding), env(safe-area-inset-left));
+      border-top: 1px solid var(--line);
+    }
+
+    .reading-surface-inner {
+      width: min(100%, 34rem);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .eyebrow {
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(0.68rem, 1.2vw, 0.76rem);
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      max-width: 15ch;
+      margin: 0.9rem auto 0;
+      font-family:
+        "Iowan Old Style",
+        "Palatino Linotype",
+        "Book Antiqua",
+        Palatino,
+        Georgia,
+        serif;
+      font-size: clamp(1.9rem, 4.8vw, 3.4rem);
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      text-wrap: balance;
+    }
+
+    /* Kort fortalt headline: deliberate semantic line rhythm, not
+       browser-determined auto-wrap. Scoped to this heading only so the
+       Status heading keeps its default max-width/wrap behaviour. */
+    #kort-fortalt-heading {
+      max-width: none;
+      width: 100%;
+    }
+
+    /* Forces a conceptual text unit onto its own line without breaking
+       the underlying text into visually separate elements. Reused for
+       the headline and the signal quote. */
+    .editorial-line {
+      display: block;
+    }
+
+    .reading-surface p {
+      margin: 1rem 0 0;
+      color: var(--foreground);
+      font-size: clamp(0.95rem, 1.9vw, 1.08rem);
+      line-height: 1.6;
+      text-wrap: pretty;
+    }
+
+    .reading-surface .signal {
+      max-width: 32ch;
+      margin: clamp(1.5rem, 3.5vw, 2.25rem) auto 0;
+      padding: clamp(0.9rem, 2.2vw, 1.35rem) 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      color: var(--foreground);
+      font-family:
+        "Iowan Old Style",
+        "Palatino Linotype",
+        "Book Antiqua",
+        Palatino,
+        Georgia,
+        serif;
+      font-size: clamp(1.15rem, 2.8vw, 1.7rem);
+      font-weight: 400;
+      line-height: 1.22;
+      letter-spacing: -0.01em;
+      text-wrap: balance;
+    }
+
+    .reading-surface .screen-cue {
+      margin-top: clamp(1.4rem, 3vw, 2rem);
+      color: var(--muted);
+      font-size: clamp(0.72rem, 1.3vw, 0.8rem);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    /* ---------- Context signal (quiet transition, not a reading surface) ---------- */
+
+    .context-signal {
+      padding: clamp(1.75rem, 4vw, 2.5rem) max(var(--page-padding), env(safe-area-inset-right)) clamp(1.75rem, 4vw, 2.5rem) max(var(--page-padding), env(safe-area-inset-left));
+      border-top: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .context-signal-inner {
+      width: min(100%, 28rem);
+      margin: 0 auto;
+    }
+
+    .context-copy {
+      margin: 0.6rem 0 0;
+      color: var(--muted);
+      font-size: clamp(0.85rem, 1.6vw, 0.95rem);
+      line-height: 1.6;
+      text-wrap: pretty;
+    }
+
+    /* ---------- Deeper exploration (tabs) ---------- */
+
+    .deeper {
+      padding: var(--section-padding) max(var(--page-padding), env(safe-area-inset-right)) var(--section-padding) max(var(--page-padding), env(safe-area-inset-left));
+      border-top: 1px solid var(--line);
+    }
+
+    .deeper-inner {
+      max-width: 44rem;
+      margin: 0 auto;
+    }
+
+    .tablist {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.55rem;
+      margin: 0 0 clamp(1.5rem, 4vw, 2.25rem);
+    }
+
+    .tab {
+      appearance: none;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      margin: 0;
+      padding: 0.85rem 1rem;
+      background: rgba(255, 255, 255, 0.4);
+      color: var(--muted);
+      font-family: inherit;
+      font-size: clamp(0.8rem, 1.6vw, 0.92rem);
+      font-weight: 600;
+      line-height: 1.1;
+      cursor: pointer;
+      transition: background 200ms ease, color 200ms ease, border-color 200ms ease;
+    }
+
+    .tab[aria-selected="true"] {
+      background: var(--foreground);
+      color: var(--background);
+      border-color: var(--foreground);
+    }
+
+    .tab:hover {
+      border-color: var(--line-strong);
+    }
+
+    .tab[aria-selected="true"]:hover {
+      border-color: var(--foreground);
+    }
+
+    @media (max-width: 40rem) {
+      .tablist {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .tab-block {
+      margin-top: 1rem;
+      padding: clamp(1.35rem, 3vw, 2.1rem);
+      border: 1px solid var(--line);
+      border-radius: 1.25rem;
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      text-align: center;
+    }
+
+    .kicker {
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(0.68rem, 1.2vw, 0.76rem);
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      max-width: 22ch;
+      margin: 0.9rem auto 0;
+      font-family:
+        "Iowan Old Style",
+        "Palatino Linotype",
+        "Book Antiqua",
+        Palatino,
+        Georgia,
+        serif;
+      font-size: clamp(1.4rem, 3.4vw, 2rem);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      text-wrap: balance;
+    }
+
+    .tab-block p {
+      max-width: 34rem;
+      margin: 0.9rem auto 0;
+      color: var(--foreground);
+      font-size: clamp(0.92rem, 1.8vw, 1.02rem);
+      line-height: 1.6;
+      text-wrap: pretty;
+    }
+
+    .boundaries {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: clamp(2.25rem, 6vw, 3.25rem);
+      padding-top: clamp(2rem, 5vw, 2.75rem);
+      border-top: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .boundary {
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .boundary h3 {
+      max-width: none;
+      font-family: inherit;
+      font-size: clamp(0.85rem, 1.6vw, 0.95rem);
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    .boundary p {
+      margin: 0.4rem 0 0;
+      color: var(--muted);
+      font-size: clamp(0.85rem, 1.6vw, 0.95rem);
+      line-height: 1.55;
+    }
+
+    @media (min-width: 40rem) {
+      .boundaries {
+        grid-template-columns: repeat(3, 1fr);
+        gap: clamp(1.5rem, 4vw, 2.5rem);
+      }
+    }
+
+    /* ---------- Status surface ---------- */
+
+    .norway-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      color: var(--muted);
+    }
+
+    .norway-line .flag {
+      flex: none;
+      display: block;
+      border-radius: 1px;
+    }
+
+    .closing {
+      margin-top: clamp(1.75rem, 4vw, 2.25rem);
+      padding-top: clamp(1.5rem, 4vw, 2rem);
+      border-top: 1px solid var(--line);
+      color: var(--muted) !important;
+      font-size: clamp(0.85rem, 1.6vw, 0.95rem) !important;
+    }
+
+    .status-surface .quiet-action {
+      margin-top: clamp(1.5rem, 4vw, 2rem);
+    }
+
+    /* ---------- Compact spacing on short viewports ---------- */
+    /* Keeps typography untouched; only tightens vertical rhythm so the
+       Status reading surface remains reachable in one scroll on short
+       phone viewports (e.g. 320x568). */
+
+    @media (max-height: 640px) {
+      .reading-surface {
+        padding-top: 0.68rem;
+        padding-bottom: 0.68rem;
+      }
+
+      .reading-surface p {
+        margin-top: 0.28rem;
+      }
+
+      h2 {
+        margin-top: 0.25rem;
+      }
+
+      .reading-surface .signal {
+        margin-top: 0.75rem;
+        padding: 0.4rem 0;
+      }
+
+      .reading-surface .screen-cue {
+        margin-top: 0.55rem;
+      }
+
+      .closing {
+        margin-top: 0.28rem;
+        padding-top: 0.35rem;
+      }
+
+      .status-surface .quiet-action {
+        margin-top: 0.18rem;
+      }
+    }
+
+    /* ---------- Reduced motion / forced colors ---------- */
+
     @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
       body::before {
         animation: none;
       }
@@ -209,18 +645,212 @@
       .status::before {
         background: currentColor;
       }
+
+      .tab-block {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+      }
+
+      .tab {
+        background: Canvas;
+        color: CanvasText;
+        border-color: ButtonText;
+      }
+
+      .tab[aria-selected="true"] {
+        border-width: 3px;
+        text-decoration: underline;
+      }
+
+      :focus-visible {
+        outline-color: CanvasText;
+      }
     }
   </style>
 </head>
 
 <body>
   <main>
-    <section class="identity" aria-labelledby="site-name">
-      <h1 id="site-name">Varde Ark</h1>
-      <p class="lede">Utvikler korte, sporbare beslutningsgrunnlag for operativ ledelse.</p>
-      <p class="principle">Fra spredt rapportering til et avgrenset grunnlag å handle på — med mennesket fortsatt ansvarlig for beslutningen.</p>
-      <p class="status">Under utvikling</p>
+    <section class="hero" id="top">
+      <div class="identity" aria-labelledby="site-name">
+        <h1 id="site-name">Varde Ark</h1>
+        <p class="lede">Utvikler korte, sporbare beslutningsgrunnlag for operativ ledelse.</p>
+        <p class="principle">Når rapportering og analyse blir mer omfattende, må veien til beslutning bli enklere.</p>
+        <p class="status">
+          <span>Under utvikling</span>
+          <a class="status-link" href="#status">Se status <span class="arrow" aria-hidden="true">↓</span></a>
+        </p>
+        <p class="origin">
+          <svg class="flag" viewBox="0 0 22 16" width="16" height="12" aria-hidden="true" focusable="false">
+            <rect width="22" height="16" fill="#EF2B2D"></rect>
+            <rect x="6" width="4" height="16" fill="#fff"></rect>
+            <rect y="6" width="22" height="4" fill="#fff"></rect>
+            <rect x="7" width="2" height="16" fill="#002868"></rect>
+            <rect y="7" width="22" height="2" fill="#002868"></rect>
+          </svg>
+          Utviklet i Norge
+        </p>
+        <a class="primary-action" href="#kort-fortalt">Se litt mer <span class="arrow" aria-hidden="true">↓</span></a>
+      </div>
+    </section>
+
+    <section class="reading-surface" id="kort-fortalt" aria-labelledby="kort-fortalt-heading">
+      <div class="reading-surface-inner">
+        <p class="eyebrow">Kort fortalt</p>
+        <h2 id="kort-fortalt-heading"><span class="editorial-line">Analysekapasiteten øker.</span>
+          <span class="editorial-line">Lederens oppmerksomhet</span>
+          <span class="editorial-line">gjør ikke.</span></h2>
+        <p>Varde Ark arbeider med laget etter rapporteringen: et kortere, avgrenset og etterprøvbart beslutningsgrunnlag for det som faktisk trenger oppmerksomhet.</p>
+        <p>Målet er ikke flere analyser. Målet er mindre avstand mellom et godt grunnlag og en menneskelig beslutning.</p>
+        <p class="signal"><span class="editorial-line">Mer informasjon er nyttig.</span>
+          <span class="editorial-line">Mer beslutningsstøy er det ikke.</span></p>
+        <p class="screen-cue">Fortsett når du er klar <span class="arrow" aria-hidden="true">↓</span></p>
+      </div>
+    </section>
+
+    <section class="context-signal" aria-label="Første anvendelsesområde">
+      <div class="context-signal-inner">
+        <p class="eyebrow">Første anvendelsesområde</p>
+        <p class="context-copy">Varde Ark utvikles med utgangspunkt i gjentakende operativ rapportering i hotellvirksomhet.</p>
+      </div>
+    </section>
+
+    <section class="deeper" aria-label="Utforsk mer om Varde Ark">
+      <div class="deeper-inner">
+        <div data-tabs>
+          <article class="tab-block" data-tab-label="Hva dette er">
+            <p class="kicker">Produktidé</p>
+            <h3>Et kontrollert beslutningslag ved siden av systemene virksomheten allerede bruker.</h3>
+            <p>Varde Ark skal ikke erstatte rapportering, BI eller operative systemer. Det arbeider med neste ledd: et kortere grunnlag som er enklere å forstå, etterprøve og følge opp.</p>
+          </article>
+          <article class="tab-block" data-tab-label="Hvorfor nå">
+            <p class="kicker">Utviklingen rundt oss</p>
+            <h3>Når systemene kan produsere mer, blir avgrensning viktigere.</h3>
+            <p>Moderne verktøy kan gi ledelsen stadig mer rapportering, analyse og forklaring. Det løser ikke automatisk spørsmålet om hva som faktisk bør få oppmerksomhet nå. Varde Ark utforsker den siste delen av kjeden.</p>
+          </article>
+          <article class="tab-block" data-tab-label="Kontroll">
+            <p class="kicker">Prinsipp</p>
+            <h3>Kontroll før konklusjon.</h3>
+            <p>Sporbarhet, avgrensning og synlig usikkerhet er viktigere enn å fremstå sikker. Når grunnlaget ikke er godt nok, skal det være synlig — ikke kompenseres med mer tekst.</p>
+          </article>
+        </div>
+
+        <div class="boundaries">
+          <div class="boundary">
+            <h3>Ikke mer skjermflate</h3>
+            <p>Produktverdien skal ligge i beslutningsgrunnlaget, ikke i mer navigasjon.</p>
+          </div>
+          <div class="boundary">
+            <h3>Ikke fri generering</h3>
+            <p>Kontroll skal ikke bygge på skjult gjetting eller autonom beslutning.</p>
+          </div>
+          <div class="boundary">
+            <h3>Mennesket bestemmer</h3>
+            <p>Systemet skal redusere beslutningsstøy uten å overta beslutningsansvaret.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reading-surface status-surface" id="status" aria-labelledby="status-heading">
+      <div class="reading-surface-inner">
+        <p class="eyebrow">Status</p>
+        <h2 id="status-heading">Bygger før vi påstår.</h2>
+        <p>Varde Ark er under kontrollert utvikling. Produktgrensen er definert, og sporbarhet, avgrensning og menneskelig beslutningsansvar er bærende prinsipper.</p>
+        <p class="norway-line">
+          <svg class="flag" viewBox="0 0 22 16" width="16" height="12" aria-hidden="true" focusable="false">
+            <rect width="22" height="16" fill="#EF2B2D"></rect>
+            <rect x="6" width="4" height="16" fill="#fff"></rect>
+            <rect y="6" width="22" height="4" fill="#fff"></rect>
+            <rect x="7" width="2" height="16" fill="#002868"></rect>
+            <rect y="7" width="22" height="2" fill="#002868"></rect>
+          </svg>
+          Utviklet i Norge, med vekt på kontroll, sporbarhet og tydelig ansvar.
+        </p>
+        <p class="closing">Status oppdateres når dokumentert grunnlag gjør det forsvarlig.</p>
+        <a class="quiet-action" href="#top"><span class="arrow" aria-hidden="true">↑</span> Til toppen</a>
+      </div>
     </section>
   </main>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var container = document.querySelector("[data-tabs]");
+      if (!container) {
+        return;
+      }
+
+      var blocks = Array.prototype.slice.call(container.querySelectorAll(".tab-block"));
+      if (blocks.length < 2) {
+        return;
+      }
+
+      var tablist = document.createElement("div");
+      tablist.className = "tablist";
+      tablist.setAttribute("role", "tablist");
+      tablist.setAttribute("aria-label", "Utforsk mer om Varde Ark");
+
+      var tabs = blocks.map(function (block, index) {
+        var tabId = "tab-" + (index + 1);
+        var panelId = "panel-" + (index + 1);
+
+        block.id = panelId;
+        block.setAttribute("role", "tabpanel");
+        block.setAttribute("aria-labelledby", tabId);
+        block.tabIndex = 0;
+
+        var tab = document.createElement("button");
+        tab.type = "button";
+        tab.id = tabId;
+        tab.className = "tab";
+        tab.setAttribute("role", "tab");
+        tab.setAttribute("aria-controls", panelId);
+        tab.textContent = block.getAttribute("data-tab-label");
+        tablist.appendChild(tab);
+        return tab;
+      });
+
+      container.parentNode.insertBefore(tablist, container);
+
+      function select(index) {
+        tabs.forEach(function (tab, i) {
+          var active = i === index;
+          tab.setAttribute("aria-selected", active ? "true" : "false");
+          tab.tabIndex = active ? 0 : -1;
+          blocks[i].hidden = !active;
+        });
+      }
+
+      tabs.forEach(function (tab, index) {
+        tab.addEventListener("click", function () {
+          select(index);
+        });
+
+        tab.addEventListener("keydown", function (event) {
+          var nextIndex = null;
+
+          if (event.key === "ArrowRight") {
+            nextIndex = (index + 1) % tabs.length;
+          } else if (event.key === "ArrowLeft") {
+            nextIndex = (index - 1 + tabs.length) % tabs.length;
+          } else if (event.key === "Home") {
+            nextIndex = 0;
+          } else if (event.key === "End") {
+            nextIndex = tabs.length - 1;
+          }
+
+          if (nextIndex !== null) {
+            event.preventDefault();
+            select(nextIndex);
+            tabs[nextIndex].focus();
+          }
+        });
+      });
+
+      select(0);
+    })();
+  </script>
 </body>
 </html>
