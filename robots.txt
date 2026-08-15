@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vardeark.no/sitemap.xml
