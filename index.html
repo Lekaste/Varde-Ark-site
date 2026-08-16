@@ -1084,12 +1084,23 @@
         }, FADE_MS);
       }
 
+      function reconcileToCurrentLocation() {
+        /* Called after a stale response is discarded: catch up to
+           wherever the browser has actually navigated to in the
+           meantime, or do nothing if that already matches what is
+           currently rendered. */
+        if (location.pathname !== currentPath) {
+          performSwitch(location.pathname, false);
+        }
+      }
+
       function performSwitch(url, push) {
         if (switching) {
           return;
         }
         switching = true;
         var anchor = currentAnchor();
+        var requestedPath = url;
 
         try {
           fetch(url, { credentials: "same-origin" })
@@ -1100,8 +1111,22 @@
               return response.text();
             })
             .then(function (html) {
+              if (!push && location.pathname !== requestedPath) {
+                /* History-driven switch, but the browser already
+                   navigated elsewhere while this fetch was in flight.
+                   Never apply a stale response. */
+                switching = false;
+                reconcileToCurrentLocation();
+                return;
+              }
               var doc = new DOMParser().parseFromString(html, "text/html");
               fadeTo(function () {
+                if (!push && location.pathname !== requestedPath) {
+                  /* The browser navigated again during the fade itself. */
+                  switching = false;
+                  reconcileToCurrentLocation();
+                  return;
+                }
                 var ok = swapDocument(doc, url, push);
                 switching = false;
                 if (!ok) {
