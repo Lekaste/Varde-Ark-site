@@ -89,6 +89,61 @@
       animation: ambient-shift 14s ease-in-out infinite alternate;
     }
 
+    /* Quiet full-viewport light sweep, played once during a language
+       transition (see script below). Purely decorative: disabled by
+       default (opacity: 0) and only ever set in motion by adding one of
+       the two direction classes below to <body>; pointer-events stay
+       off throughout so it never intercepts interaction. */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.05) 20%,
+        rgba(255, 255, 255, 0.16) 40%,
+        rgba(255, 255, 255, 0.22) 50%,
+        rgba(255, 255, 255, 0.16) 60%,
+        rgba(255, 255, 255, 0.05) 80%,
+        transparent 100%
+      );
+    }
+
+    body.lang-sweep-ltr::after {
+      animation: lang-sweep-ltr 980ms cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+
+    body.lang-sweep-rtl::after {
+      animation: lang-sweep-rtl 980ms cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+
+    @keyframes lang-sweep-ltr {
+      0% {
+        opacity: 1;
+        transform: translateX(-100%);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(100%);
+      }
+    }
+
+    @keyframes lang-sweep-rtl {
+      0% {
+        opacity: 1;
+        transform: translateX(100%);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(-100%);
+      }
+    }
+
     main {
       position: relative;
       isolation: isolate;
@@ -704,10 +759,20 @@
         opacity: 1;
         transform: none;
       }
+
+      body.lang-sweep-ltr::after,
+      body.lang-sweep-rtl::after {
+        animation: none;
+        opacity: 0;
+      }
     }
 
     @media (forced-colors: active) {
       body::before {
+        display: none;
+      }
+
+      body::after {
         display: none;
       }
 
@@ -959,7 +1024,10 @@
 
       var reduceMotion =
         window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      var FADE_MS = reduceMotion ? 0 : 110;
+      var FADE_OUT_MS = reduceMotion ? 0 : 300;
+      var NEUTRAL_MS = reduceMotion ? 0 : 15;
+      var FADE_IN_MS = reduceMotion ? 0 : 430;
+      var TRANSITION_EASE = "cubic-bezier(.22, .61, .36, 1)";
       var switching = false;
       var currentPath = location.pathname;
 
@@ -1069,19 +1137,60 @@
         return true;
       }
 
-      function fadeTo(callback) {
+      function clearSweep() {
+        document.body.classList.remove("lang-sweep-ltr", "lang-sweep-rtl");
+      }
+
+      function startSweep(direction) {
+        if (!direction) {
+          return;
+        }
+        clearSweep();
+        /* Force a reflow so a sweep started again immediately (e.g. a
+           rapid reversal) always replays its animation from the start. */
+        void document.body.offsetWidth;
+        document.body.classList.add("lang-sweep-" + direction);
+      }
+
+      function restoreMainInstant(main) {
+        if (!main) {
+          return;
+        }
+        main.style.transition = "";
+        main.style.opacity = "1";
+      }
+
+      function fadeMainIn(main) {
+        if (!main || FADE_IN_MS === 0) {
+          restoreMainInstant(main);
+          return;
+        }
+        main.style.transition = "opacity " + FADE_IN_MS + "ms " + TRANSITION_EASE;
+        main.getBoundingClientRect();
+        main.style.opacity = "1";
+      }
+
+      /* Fades <main> to invisible and, only once it is effectively
+         invisible (after a short neutral interval), invokes callback.
+         callback owns what happens next -- the DOM/metadata swap, or
+         discarding a stale response -- and is responsible for calling
+         fadeMainIn or restoreMainInstant itself once it knows which. */
+      function fadeMainOut(callback, sweepDirection) {
         var main = document.querySelector("main");
-        if (!main || FADE_MS === 0) {
+        if (!main || FADE_OUT_MS === 0) {
           callback();
           return;
         }
-        main.style.transition = "opacity " + FADE_MS + "ms ease";
+        startSweep(sweepDirection);
+        main.style.transition = "opacity " + FADE_OUT_MS + "ms " + TRANSITION_EASE;
         main.style.opacity = "0";
         window.setTimeout(function () {
-          callback();
-          main.getBoundingClientRect();
-          main.style.opacity = "1";
-        }, FADE_MS);
+          if (NEUTRAL_MS === 0) {
+            callback();
+            return;
+          }
+          window.setTimeout(callback, NEUTRAL_MS);
+        }, FADE_OUT_MS);
       }
 
       function reconcileToCurrentLocation() {
@@ -1133,9 +1242,18 @@
                 return;
               }
               var doc = new DOMParser().parseFromString(html, "text/html");
-              fadeTo(function () {
+              var sweepDirection = url === "/en/" ? "ltr" : "rtl";
+              fadeMainOut(function () {
+                var main = document.querySelector("main");
                 if (!push && location.pathname !== requestedPath) {
-                  /* The browser navigated again during the fade itself. */
+                  /* The browser navigated again during the fade itself.
+                     The still-current content was never actually
+                     replaced, so restore it instantly -- there is
+                     nothing "arriving" to fade in -- and let
+                     reconcileToCurrentLocation() start a fresh, correct
+                     switch for wherever the browser actually is now. */
+                  restoreMainInstant(main);
+                  clearSweep();
                   switching = false;
                   reconcileToCurrentLocation();
                   return;
@@ -1143,10 +1261,13 @@
                 var ok = swapDocument(doc, url, push);
                 switching = false;
                 if (!ok) {
+                  restoreMainInstant(main);
+                  clearSweep();
                   window.location.href = url;
                   return;
                 }
                 currentPath = location.pathname;
+                fadeMainIn(main);
                 restoreAnchor(anchor);
                 focusMainTransiently();
                 announce(
@@ -1154,7 +1275,7 @@
                     ? "Language changed to English"
                     : "Språk endret til norsk"
                 );
-              });
+              }, sweepDirection);
             })
             .catch(function () {
               handleSwitchFailure(url, push, requestedPath);
@@ -1203,6 +1324,16 @@
           return;
         }
         performSwitch(location.pathname, false);
+      });
+
+      document.body.addEventListener("animationend", function (event) {
+        /* Belt-and-suspenders cleanup: a sweep already reverts to its
+           resting (invisible) state on its own once its animation ends
+           (animation-fill-mode defaults to "none"), but this also drops
+           the now-inert class so no transient state lingers on <body>. */
+        if (event.target === document.body) {
+          clearSweep();
+        }
       });
     })();
   </script>
