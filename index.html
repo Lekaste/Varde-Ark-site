@@ -17,7 +17,7 @@
   <meta property="og:title" content="Varde Ark — Sporbare beslutningsgrunnlag for operativ ledelse">
   <meta property="og:description" content="Varde Ark utvikler korte, sporbare beslutningsgrunnlag for operativ ledelse, med mindre avstand mellom rapportering og menneskelig beslutning.">
   <meta property="og:locale" content="nb_NO">
-  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="en_GB">
 
   <script type="application/ld+json">
   {
@@ -191,6 +191,13 @@
         opacity: 1;
         transform: translateY(0);
       }
+    }
+
+    /* After a dynamic language swap, newly-inserted hero content must not
+       replay the initial-load entrance animation -- only the language
+       cross-fade (in the script below) should be visible. */
+    main.js-swapped .identity {
+      animation: none;
     }
 
     h1 {
@@ -777,7 +784,7 @@
     <section class="context-signal" id="first-application-area" aria-label="Første anvendelsesområde">
       <div class="context-signal-inner">
         <p class="eyebrow">Første anvendelsesområde</p>
-        <p class="context-copy">Varde Ark utvikles med utgangspunkt i gjentakende operativ rapportering i hotellvirksomhet.</p>
+        <p class="context-copy">Hotell er det første anvendelsesområdet. Varde Ark utforsker også andre miljøer med gjentakende rapportering der det samme underliggende problemet kan finnes.</p>
       </div>
     </section>
 
@@ -1045,6 +1052,13 @@
           }
         );
 
+        var jsonLdEl = document.querySelector('script[type="application/ld+json"]');
+        var newJsonLdEl = doc.querySelector('script[type="application/ld+json"]');
+        if (jsonLdEl && newJsonLdEl) {
+          jsonLdEl.textContent = newJsonLdEl.textContent;
+        }
+
+        currentMain.classList.add("js-swapped");
         currentMain.innerHTML = newMain.innerHTML;
         initTabs(currentMain);
 
@@ -1127,6 +1141,13 @@
           event.shiftKey ||
           event.altKey
         ) {
+          return;
+        }
+        if (link.getAttribute("aria-current") === "page") {
+          /* Already the active language: a true no-op -- no fetch, no
+             fade, no DOM swap, no history entry, no focus movement, no
+             announcement. */
+          event.preventDefault();
           return;
         }
         var url = link.getAttribute("href");
