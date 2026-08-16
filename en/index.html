@@ -1094,6 +1094,19 @@
         }
       }
 
+      function handleSwitchFailure(url, push, requestedPath) {
+        switching = false;
+        if (!push && location.pathname !== requestedPath) {
+          /* A history-driven request that failed, but the browser has
+             already moved on while it was in flight -- this failure no
+             longer represents where the user currently is. Never force
+             navigation to a stale target; just catch up if needed. */
+          reconcileToCurrentLocation();
+          return;
+        }
+        window.location.href = url;
+      }
+
       function performSwitch(url, push) {
         if (switching) {
           return;
@@ -1144,12 +1157,10 @@
               });
             })
             .catch(function () {
-              switching = false;
-              window.location.href = url;
+              handleSwitchFailure(url, push, requestedPath);
             });
         } catch (err) {
-          switching = false;
-          window.location.href = url;
+          handleSwitchFailure(url, push, requestedPath);
         }
       }
 
