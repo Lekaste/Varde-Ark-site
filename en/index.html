@@ -705,6 +705,44 @@
       margin-top: clamp(1.5rem, 4vw, 2rem);
     }
 
+    /* ---------- Contact surface ---------- */
+    /* Deliberately not min-height:100vh like .reading-surface -- this is
+       a light, footer-like closing element, not a full reading surface. */
+
+    .contact-surface {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      padding: clamp(2.5rem, 6vw, 4rem) max(var(--page-padding), env(safe-area-inset-right)) clamp(2.5rem, 6vw, 4rem) max(var(--page-padding), env(safe-area-inset-left));
+      border-top: 1px solid var(--line);
+    }
+
+    .contact-surface-inner {
+      width: min(100%, 34rem);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-surface p {
+      margin: 1rem 0 0;
+      color: var(--foreground);
+      font-size: clamp(0.95rem, 1.9vw, 1.08rem);
+      line-height: 1.6;
+    }
+
+    .contact-surface address {
+      margin: 1rem 0 0;
+      font-style: normal;
+      font-size: clamp(0.95rem, 1.9vw, 1.08rem);
+    }
+
+    .contact-surface .contact-note {
+      margin-top: clamp(1.25rem, 3vw, 1.75rem);
+      padding-top: clamp(1.1rem, 3vw, 1.5rem);
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: clamp(0.85rem, 1.6vw, 0.95rem);
+    }
+
     /* ---------- Compact spacing on short viewports ---------- */
     /* Keeps typography untouched; only tightens vertical rhythm so the
        Status reading surface remains reachable in one scroll on short
@@ -907,6 +945,15 @@
         </p>
         <p class="closing">Status is updated when the documented basis supports it.</p>
         <a class="quiet-action" href="#top"><span class="arrow" aria-hidden="true">↑</span> Back to top</a>
+      </div>
+    </section>
+
+    <section class="contact-surface" id="contact" aria-labelledby="contact-heading">
+      <div class="contact-surface-inner">
+        <h3 id="contact-heading">Contact</h3>
+        <p>For research, pilot or partnership enquiries:</p>
+        <address class="contact-email"><a href="mailto:jakob@vardeark.no">jakob@vardeark.no</a></address>
+        <p class="contact-note">Varde Ark is currently operated by Jakob Pedersen under the Varde Ark working name.<br>Norway.</p>
       </div>
     </section>
   </main>
