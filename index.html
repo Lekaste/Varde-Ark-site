@@ -468,6 +468,10 @@
     /* Kort fortalt headline: deliberate semantic line rhythm, not
        browser-determined auto-wrap. Scoped to this heading only so the
        Status heading keeps its default max-width/wrap behaviour. */
+    #kort-fortalt .reading-surface-inner {
+      width: min(100%, 48rem);
+    }
+
     #kort-fortalt-heading {
       max-width: none;
       width: 100%;
@@ -615,7 +619,7 @@
     }
 
     h3 {
-      max-width: 22ch;
+      max-width: 30ch;
       margin: 0.9rem auto 0;
       font-family:
         "Iowan Old Style",
@@ -880,7 +884,7 @@
         <p>Målet er ikke flere analyser. Målet er mindre avstand mellom et godt grunnlag og en menneskelig beslutning.</p>
         <p class="signal"><span class="editorial-line">Mer informasjon er nyttig.</span>
           <span class="editorial-line">Mer beslutningsstøy er det ikke.</span></p>
-        <p class="screen-cue">Fortsett når du er klar <span class="arrow" aria-hidden="true">↓</span></p>
+        <a class="screen-cue quiet-action" href="#first-application-area">Fortsett når du er klar <span class="arrow" aria-hidden="true">↓</span></a>
       </div>
     </section>
 
@@ -953,7 +957,7 @@
         <h3 id="contact-heading">Kontakt</h3>
         <p>For research, pilot eller partnerskap:</p>
         <address class="contact-email"><a href="mailto:jakob@vardeark.no">jakob@vardeark.no</a></address>
-        <p class="contact-note">Varde Ark drives foreløpig av Jakob Pedersen under arbeidsnavnet Varde Ark.<br>Norge.</p>
+        <p class="contact-note">Varde Ark drives foreløpig av Jakob Pedersen under arbeidsnavnet Varde Ark. Norge.</p>
       </div>
     </section>
   </main>
