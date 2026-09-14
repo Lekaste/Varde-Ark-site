@@ -740,11 +740,19 @@
     }
 
     .technology-node.core {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
       padding: 0.68rem 0.9rem;
       border: 1px solid var(--line-strong);
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.68);
-      white-space: normal;
+      white-space: nowrap;
+    }
+
+    .technology-core-label::before {
+      content: "· ";
     }
 
     .technology-arrow {
@@ -796,8 +804,20 @@
       }
 
       .technology-node.core {
+        flex-direction: column;
+        gap: 0.04rem;
         padding: 0.52rem 0.42rem;
         border-radius: 0.8rem;
+        white-space: normal;
+      }
+
+      .technology-core-label {
+        font-size: 0.9em;
+        line-height: 1.05;
+      }
+
+      .technology-core-label::before {
+        content: "";
       }
 
       .technology-arrow {
@@ -1077,7 +1097,7 @@
         <div class="technology-flow" aria-label="Professional report to traceable decision brief">
           <span class="technology-node">Professional report</span>
           <span class="technology-arrow" aria-hidden="true">→</span>
-          <span class="technology-node core">Jakjo · Controlled core</span>
+          <span class="technology-node core"><span>Jakjo</span><span class="technology-core-label">Controlled core</span></span>
           <span class="technology-arrow" aria-hidden="true">→</span>
           <span class="technology-node">Concise, traceable decision brief</span>
           <span class="technology-arrow" aria-hidden="true">→</span>
