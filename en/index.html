@@ -631,6 +631,18 @@
       text-wrap: balance;
     }
 
+    .product-idea-heading {
+      max-width: 34rem;
+      width: 100%;
+    }
+
+    @media (max-width: 40rem) {
+      .product-idea-heading {
+        max-width: 28rem;
+        font-size: clamp(1.3rem, 6.4vw, 1.75rem);
+      }
+    }
+
     .tab-block p {
       max-width: 34rem;
       margin: 0.9rem auto 0;
@@ -1057,7 +1069,7 @@
         <div data-tabs>
           <article class="tab-block" data-tab-label="What this is">
             <p class="kicker">Product idea</p>
-            <h3>A controlled decision layer beside existing systems.</h3>
+            <h3 class="product-idea-heading"><span class="editorial-line">A controlled decision layer</span><span class="editorial-line">beside existing systems.</span></h3>
             <p>Varde Ark is not intended to replace reporting, BI or operational systems. It works on the next step: a shorter decision brief that is easier to understand, verify and follow up.</p>
           </article>
           <article class="tab-block" data-tab-label="Why now">
@@ -1092,7 +1104,7 @@
     <section class="technology-surface" id="technology" aria-labelledby="technology-heading">
       <div class="technology-inner">
         <p class="eyebrow">Technology behind Varde Ark</p>
-        <h2 id="technology-heading">Jakjo is the controlled processing system behind Varde Ark.</h2>
+        <h2 id="technology-heading">Jakjo is the controlled processing system.</h2>
         <p class="technology-copy">Jakjo takes information from existing professional reports, applies predefined rules and preserves the link back to the original source.</p>
         <div class="technology-flow" aria-label="Professional report to traceable decision brief">
           <span class="technology-node">Professional report</span>
