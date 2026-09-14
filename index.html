@@ -635,6 +635,18 @@
       text-wrap: balance;
     }
 
+    .product-idea-heading {
+      max-width: 34rem;
+      width: 100%;
+    }
+
+    @media (max-width: 40rem) {
+      .product-idea-heading {
+        max-width: 28rem;
+        font-size: clamp(1.3rem, 6.4vw, 1.75rem);
+      }
+    }
+
     .tab-block p {
       max-width: 34rem;
       margin: 0.9rem auto 0;
@@ -1061,7 +1073,7 @@
         <div data-tabs>
           <article class="tab-block" data-tab-label="Hva dette er">
             <p class="kicker">Produktidé</p>
-            <h3>Et kontrollert beslutningslag ved siden av systemene virksomheten allerede bruker.</h3>
+            <h3 class="product-idea-heading"><span class="editorial-line">Et kontrollert beslutningslag</span><span class="editorial-line">ved siden av eksisterende systemer.</span></h3>
             <p>Varde Ark skal ikke erstatte rapportering, BI eller operative systemer. Det arbeider med neste ledd: et kortere grunnlag som er enklere å forstå, etterprøve og følge opp.</p>
           </article>
           <article class="tab-block" data-tab-label="Hvorfor nå">
@@ -1096,7 +1108,7 @@
     <section class="technology-surface" id="technology" aria-labelledby="technology-heading">
       <div class="technology-inner">
         <p class="eyebrow">Teknologien bak Varde Ark</p>
-        <h2 id="technology-heading">Jakjo er det kontrollerte behandlingssystemet bak Varde Ark.</h2>
+        <h2 id="technology-heading">Jakjo er det kontrollerte behandlingssystemet.</h2>
         <p class="technology-copy">Jakjo tar informasjon fra eksisterende fagrapporter, behandler den gjennom definerte regler og bevarer koblingen tilbake til den opprinnelige kilden.</p>
         <div class="technology-flow" aria-label="Fagrapport til sporbar beslutningsflate">
           <span class="technology-node">Fagrapport</span>
