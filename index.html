@@ -635,6 +635,18 @@
       text-wrap: balance;
     }
 
+    .product-idea-heading {
+      max-width: 34rem;
+      width: 100%;
+    }
+
+    @media (max-width: 40rem) {
+      .product-idea-heading {
+        max-width: 28rem;
+        font-size: clamp(1.3rem, 6.4vw, 1.75rem);
+      }
+    }
+
     .tab-block p {
       max-width: 34rem;
       margin: 0.9rem auto 0;
@@ -678,6 +690,167 @@
       .boundaries {
         grid-template-columns: repeat(3, 1fr);
         gap: clamp(1.5rem, 4vw, 2.5rem);
+      }
+    }
+
+    /* ---------- Technology behind Varde Ark ---------- */
+
+    .technology-surface {
+      padding: var(--section-padding) max(var(--page-padding), env(safe-area-inset-right)) var(--section-padding) max(var(--page-padding), env(safe-area-inset-left));
+      border-top: 1px solid var(--line);
+    }
+
+    .technology-inner {
+      width: min(100%, 72rem);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    #technology-heading {
+      width: min(100%, 52rem);
+      max-width: none;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .technology-copy,
+    .technology-note {
+      max-width: 50rem;
+      margin: 1rem auto 0;
+      color: var(--foreground);
+      font-size: clamp(0.92rem, 1.8vw, 1.02rem);
+      line-height: 1.6;
+      text-wrap: pretty;
+    }
+
+    .technology-note {
+      color: var(--muted);
+    }
+
+    .technology-flow {
+      display: grid;
+      grid-template-columns:
+        minmax(0, 1.05fr)
+        auto
+        minmax(0, 0.95fr)
+        auto
+        minmax(0, 1.35fr)
+        auto
+        minmax(0, 1.05fr);
+      align-items: center;
+      width: min(100%, 68rem);
+      gap: clamp(0.45rem, 1.25vw, 1rem);
+      margin: clamp(1.6rem, 4vw, 2.35rem) auto 0;
+      padding: clamp(1.05rem, 2.4vw, 1.45rem) clamp(1rem, 2.5vw, 1.5rem);
+      border: 1px solid var(--line);
+      border-radius: 1.25rem;
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .technology-node {
+      min-width: 0;
+      font-size: clamp(0.74rem, 1.3vw, 0.9rem);
+      font-weight: 600;
+      line-height: 1.3;
+      text-wrap: balance;
+    }
+
+    .technology-node.core {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
+      padding: 0.68rem 0.9rem;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.68);
+      white-space: nowrap;
+    }
+
+    .technology-core-label::before {
+      content: "· ";
+    }
+
+    .technology-arrow {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    @media (max-width: 48rem) {
+      .technology-surface {
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
+      }
+
+      .technology-inner {
+        width: 100%;
+      }
+
+      #technology-heading {
+        width: min(100%, 23rem);
+        font-size: clamp(2rem, 9vw, 2.8rem);
+      }
+
+      .technology-copy,
+      .technology-note {
+        max-width: 34rem;
+        padding-left: 0.35rem;
+        padding-right: 0.35rem;
+      }
+
+      .technology-flow {
+        grid-template-columns:
+          minmax(0, 1fr)
+          auto
+          minmax(0, 0.92fr)
+          auto
+          minmax(0, 1.2fr)
+          auto
+          minmax(0, 1fr);
+        width: 100%;
+        gap: 0.26rem;
+        padding: 0.9rem 0.65rem;
+        border-radius: 1rem;
+      }
+
+      .technology-node {
+        font-size: clamp(0.64rem, 2.45vw, 0.76rem);
+        line-height: 1.22;
+      }
+
+      .technology-node.core {
+        flex-direction: column;
+        gap: 0.04rem;
+        padding: 0.52rem 0.42rem;
+        border-radius: 0.8rem;
+        white-space: normal;
+      }
+
+      .technology-core-label {
+        font-size: 0.9em;
+        line-height: 1.05;
+      }
+
+      .technology-core-label::before {
+        content: "";
+      }
+
+      .technology-arrow {
+        font-size: 0.78rem;
+        transform: none;
+      }
+    }
+
+    @media (max-width: 23rem) {
+      .technology-flow {
+        gap: 0.18rem;
+        padding-left: 0.45rem;
+        padding-right: 0.45rem;
+      }
+
+      .technology-node {
+        font-size: 0.61rem;
       }
     }
 
@@ -884,14 +1057,14 @@
         <p>Målet er ikke flere analyser. Målet er mindre avstand mellom et godt grunnlag og en menneskelig beslutning.</p>
         <p class="signal"><span class="editorial-line">Mer informasjon er nyttig.</span>
           <span class="editorial-line">Mer beslutningsstøy er det ikke.</span></p>
-        <a class="screen-cue quiet-action" href="#first-application-area">Fortsett når du er klar <span class="arrow" aria-hidden="true">↓</span></a>
+        <a class="screen-cue quiet-action" href="#current-research-focus">Fortsett når du er klar <span class="arrow" aria-hidden="true">↓</span></a>
       </div>
     </section>
 
-    <section class="context-signal" id="first-application-area" aria-label="Første anvendelsesområde">
+    <section class="context-signal" id="current-research-focus" aria-label="Nåværende forskningsfokus">
       <div class="context-signal-inner">
-        <p class="eyebrow">Første anvendelsesområde</p>
-        <p class="context-copy">Hotell er det første anvendelsesområdet. Varde Ark utforsker også andre miljøer med gjentakende rapportering der det samme underliggende problemet kan finnes.</p>
+        <p class="eyebrow">Nåværende forskningsfokus</p>
+        <p class="context-copy">Varde Ark undersøker nå EICR og elektrisk compliance i Storbritannia som et aktivt anvendelsesområde. Arbeidet er i research- og utviklingsfase, og skal først vise om den samme beslutningsfriksjonen faktisk finnes der.</p>
       </div>
     </section>
 
@@ -900,7 +1073,7 @@
         <div data-tabs>
           <article class="tab-block" data-tab-label="Hva dette er">
             <p class="kicker">Produktidé</p>
-            <h3>Et kontrollert beslutningslag ved siden av systemene virksomheten allerede bruker.</h3>
+            <h3 class="product-idea-heading"><span class="editorial-line">Et kontrollert beslutningslag</span><span class="editorial-line">ved siden av eksisterende systemer.</span></h3>
             <p>Varde Ark skal ikke erstatte rapportering, BI eller operative systemer. Det arbeider med neste ledd: et kortere grunnlag som er enklere å forstå, etterprøve og følge opp.</p>
           </article>
           <article class="tab-block" data-tab-label="Hvorfor nå">
@@ -929,6 +1102,24 @@
             <p>Systemet skal redusere beslutningsstøy uten å overta beslutningsansvaret.</p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="technology-surface" id="technology" aria-labelledby="technology-heading">
+      <div class="technology-inner">
+        <p class="eyebrow">Teknologien bak Varde Ark</p>
+        <h2 id="technology-heading">Jakjo er det kontrollerte behandlingssystemet.</h2>
+        <p class="technology-copy">Jakjo tar informasjon fra eksisterende fagrapporter, behandler den gjennom definerte regler og bevarer koblingen tilbake til den opprinnelige kilden.</p>
+        <div class="technology-flow" aria-label="Fagrapport til sporbar beslutningsflate">
+          <span class="technology-node">Fagrapport</span>
+          <span class="technology-arrow" aria-hidden="true">→</span>
+          <span class="technology-node core"><span>Jakjo</span><span class="technology-core-label">Kontrollert kjerne</span></span>
+          <span class="technology-arrow" aria-hidden="true">→</span>
+          <span class="technology-node">Kort, sporbart beslutningsgrunnlag</span>
+          <span class="technology-arrow" aria-hidden="true">→</span>
+          <span class="technology-node">Ledelse / oppfølging</span>
+        </div>
+        <p class="technology-note">Jakjo skal ikke erstatte fagrapporten eller endre den faglige vurderingen bak den. Det arbeider med laget etter rapporten: hva som er dokumentert, hva som fortsatt er uavklart, og hva som trenger organisatorisk oppfølging.</p>
       </div>
     </section>
 
