@@ -689,14 +689,21 @@
     }
 
     .technology-inner {
-      width: min(100%, 44rem);
+      width: min(100%, 72rem);
       margin: 0 auto;
       text-align: center;
     }
 
+    #technology-heading {
+      width: min(100%, 52rem);
+      max-width: none;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     .technology-copy,
     .technology-note {
-      max-width: 38rem;
+      max-width: 50rem;
       margin: 1rem auto 0;
       color: var(--foreground);
       font-size: clamp(0.92rem, 1.8vw, 1.02rem);
@@ -710,44 +717,108 @@
 
     .technology-flow {
       display: grid;
-      grid-template-columns: auto auto auto auto auto auto auto;
+      grid-template-columns:
+        minmax(0, 1.05fr)
+        auto
+        minmax(0, 0.95fr)
+        auto
+        minmax(0, 1.35fr)
+        auto
+        minmax(0, 1.05fr);
       align-items: center;
-      justify-content: center;
-      gap: clamp(0.45rem, 1.5vw, 0.85rem);
+      width: min(100%, 68rem);
+      gap: clamp(0.45rem, 1.25vw, 1rem);
       margin: clamp(1.6rem, 4vw, 2.35rem) auto 0;
-      padding: clamp(1.1rem, 3vw, 1.6rem);
+      padding: clamp(1.05rem, 2.4vw, 1.45rem) clamp(1rem, 2.5vw, 1.5rem);
       border: 1px solid var(--line);
       border-radius: 1.25rem;
       background: rgba(255, 255, 255, 0.4);
     }
 
     .technology-node {
-      font-size: clamp(0.76rem, 1.4vw, 0.88rem);
+      min-width: 0;
+      font-size: clamp(0.74rem, 1.3vw, 0.9rem);
       font-weight: 600;
-      line-height: 1.35;
+      line-height: 1.3;
       text-wrap: balance;
     }
 
     .technology-node.core {
-      padding: 0.6rem 0.85rem;
+      padding: 0.68rem 0.9rem;
       border: 1px solid var(--line-strong);
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.62);
+      background: rgba(255, 255, 255, 0.68);
+      white-space: normal;
     }
 
     .technology-arrow {
       color: var(--muted);
       font-size: 1rem;
+      line-height: 1;
     }
 
     @media (max-width: 48rem) {
-      .technology-flow {
-        grid-template-columns: 1fr;
+      .technology-surface {
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
+      }
+
+      .technology-inner {
+        width: 100%;
+      }
+
+      #technology-heading {
         width: min(100%, 23rem);
+        font-size: clamp(2rem, 9vw, 2.8rem);
+      }
+
+      .technology-copy,
+      .technology-note {
+        max-width: 34rem;
+        padding-left: 0.35rem;
+        padding-right: 0.35rem;
+      }
+
+      .technology-flow {
+        grid-template-columns:
+          minmax(0, 1fr)
+          auto
+          minmax(0, 0.92fr)
+          auto
+          minmax(0, 1.2fr)
+          auto
+          minmax(0, 1fr);
+        width: 100%;
+        gap: 0.26rem;
+        padding: 0.9rem 0.65rem;
+        border-radius: 1rem;
+      }
+
+      .technology-node {
+        font-size: clamp(0.64rem, 2.45vw, 0.76rem);
+        line-height: 1.22;
+      }
+
+      .technology-node.core {
+        padding: 0.52rem 0.42rem;
+        border-radius: 0.8rem;
       }
 
       .technology-arrow {
-        transform: rotate(90deg);
+        font-size: 0.78rem;
+        transform: none;
+      }
+    }
+
+    @media (max-width: 23rem) {
+      .technology-flow {
+        gap: 0.18rem;
+        padding-left: 0.45rem;
+        padding-right: 0.45rem;
+      }
+
+      .technology-node {
+        font-size: 0.61rem;
       }
     }
 
@@ -1010,7 +1081,7 @@
         <div class="technology-flow" aria-label="Fagrapport til sporbar beslutningsflate">
           <span class="technology-node">Fagrapport</span>
           <span class="technology-arrow" aria-hidden="true">→</span>
-          <span class="technology-node core">Jakjo</span>
+          <span class="technology-node core">Jakjo · Kontrollert kjerne</span>
           <span class="technology-arrow" aria-hidden="true">→</span>
           <span class="technology-node">Kort, sporbart beslutningsgrunnlag</span>
           <span class="technology-arrow" aria-hidden="true">→</span>
