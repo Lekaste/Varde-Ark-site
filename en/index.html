@@ -677,6 +677,76 @@
       }
     }
 
+    /* ---------- Technology behind Varde Ark ---------- */
+
+    .technology-surface {
+      padding: var(--section-padding) max(var(--page-padding), env(safe-area-inset-right)) var(--section-padding) max(var(--page-padding), env(safe-area-inset-left));
+      border-top: 1px solid var(--line);
+    }
+
+    .technology-inner {
+      width: min(100%, 44rem);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .technology-copy,
+    .technology-note {
+      max-width: 38rem;
+      margin: 1rem auto 0;
+      color: var(--foreground);
+      font-size: clamp(0.92rem, 1.8vw, 1.02rem);
+      line-height: 1.6;
+      text-wrap: pretty;
+    }
+
+    .technology-note {
+      color: var(--muted);
+    }
+
+    .technology-flow {
+      display: grid;
+      grid-template-columns: auto auto auto auto auto auto auto;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(0.45rem, 1.5vw, 0.85rem);
+      margin: clamp(1.6rem, 4vw, 2.35rem) auto 0;
+      padding: clamp(1.1rem, 3vw, 1.6rem);
+      border: 1px solid var(--line);
+      border-radius: 1.25rem;
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .technology-node {
+      font-size: clamp(0.76rem, 1.4vw, 0.88rem);
+      font-weight: 600;
+      line-height: 1.35;
+      text-wrap: balance;
+    }
+
+    .technology-node.core {
+      padding: 0.6rem 0.85rem;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.62);
+    }
+
+    .technology-arrow {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    @media (max-width: 48rem) {
+      .technology-flow {
+        grid-template-columns: 1fr;
+        width: min(100%, 23rem);
+      }
+
+      .technology-arrow {
+        transform: rotate(90deg);
+      }
+    }
+
     /* ---------- Status surface ---------- */
 
     .norway-line {
@@ -880,14 +950,14 @@
         <p>The goal is not more analysis. The goal is less distance between a sound basis and a human decision.</p>
         <p class="signal"><span class="editorial-line">More information is useful.</span>
           <span class="editorial-line">More decision noise is not.</span></p>
-        <p class="screen-cue">Continue when you're ready <span class="arrow" aria-hidden="true">↓</span></p>
+        <a class="screen-cue quiet-action" href="#current-research-focus">Continue when you're ready <span class="arrow" aria-hidden="true">↓</span></a>
       </div>
     </section>
 
-    <section class="context-signal" id="first-application-area" aria-label="First application area">
+    <section class="context-signal" id="current-research-focus" aria-label="Current research focus">
       <div class="context-signal-inner">
-        <p class="eyebrow">First application area</p>
-        <p class="context-copy">Hotels are the first application area. Varde Ark is also exploring other recurring reporting environments where the same underlying problem may exist.</p>
+        <p class="eyebrow">Current research focus</p>
+        <p class="context-copy">Varde Ark is currently exploring Electrical Installation Condition Reports (EICRs) and electrical compliance in the United Kingdom as an active application area. The work remains in research and development and must first establish whether the same decision friction actually exists there.</p>
       </div>
     </section>
 
@@ -925,6 +995,24 @@
             <p>The system should reduce decision noise without taking over responsibility for the decision.</p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="technology-surface" id="technology" aria-labelledby="technology-heading">
+      <div class="technology-inner">
+        <p class="eyebrow">Technology behind Varde Ark</p>
+        <h2 id="technology-heading">Jakjo is the controlled processing engine beneath the surface.</h2>
+        <p class="technology-copy">Jakjo takes information from existing professional reports, applies predefined rules and preserves the link back to the original source.</p>
+        <div class="technology-flow" aria-label="Professional report to traceable decision brief">
+          <span class="technology-node">Professional report</span>
+          <span class="technology-arrow" aria-hidden="true">→</span>
+          <span class="technology-node core">Jakjo</span>
+          <span class="technology-arrow" aria-hidden="true">→</span>
+          <span class="technology-node">Concise, traceable decision brief</span>
+          <span class="technology-arrow" aria-hidden="true">→</span>
+          <span class="technology-node">Management / follow-up</span>
+        </div>
+        <p class="technology-note">Jakjo is not intended to replace the professional report or alter the professional judgement behind it. It works on the layer after the report: what is documented, what remains unresolved and what requires organisational follow-up.</p>
       </div>
     </section>
 
