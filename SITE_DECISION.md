@@ -63,41 +63,55 @@ arkitektur, eller Jakjo sine claim-grenser og dupliserer ikke
 Jakjo-governance. Dette dokumentet kan ikke overstyre, utvide eller
 gjenskape den autoriteten.
 
-## 4. Current live baseline
+## 4. Current main-source baseline
 
-Bekreftet lest fra `main` ved base-commit `e42e4f6e0287efdf9b37bb6a0d26b705dc9e7cec`:
+Bekreftet lest fra gjeldende `main` ved commit
+`9561b59f8c8d47807f1074b902c3331ba1f7eb35`:
 
-- `index.html`: én enkelt, statisk pre-launch-side. Semantisk HTML5,
-  innebygd CSS (ingen ekstern stilarkfil, ingen JavaScript, ingen
-  byggeverktøy, ingen sporing/analytics/skjema). Viser tittelen
-  "Varde Ark" og statusteksten "Pre-launch". Støtter
-  `prefers-reduced-motion` og `forced-colors`, samt safe-area-innhold via
-  `env(safe-area-inset-*)`.
+- `index.html`: norsk offentlig hovedflate med hero, forklarende
+  leseflater, kontrollert fanevisning, EICR/UK-kontekst,
+  Jakjo-teknologiforklaring, status og kontaktflate.
+- `en/index.html`: tilsvarende engelsk offentlig flate med samme
+  overordnede informasjonsarkitektur.
+- Begge rutene bruker semantisk HTML, innebygd CSS og avgrenset
+  JavaScript for faneinteraksjon og progressivt forbedret
+  NO/EN-språkbytte. Normal lenkenavigasjon fungerer som fallback.
+- Responsivitet, tastaturfokus, `prefers-reduced-motion`,
+  `forced-colors` og safe-area-håndtering er del av den godkjente
+  site-retningen.
+- Ingen analytics, kontaktformular, rammeverk, pakkebygger eller
+  ekstern frontend-avhengighet er del av den godkjente
+  hovedflaten.
 - `CNAME`: `vardeark.no`.
-- `README.md`: énlinjes repository-tittel, ingen ytterligere innhold.
-- Ingen GitHub Actions-workflows, ingen pakkefiler, ingen
-  byggekonfigurasjon funnet i repoet.
 
-Dette er den faktiske, verifiserte tilstanden på `main` på tidspunktet
-for dette dokumentet, og er referansepunktet for all fremtidig
-site-endring inntil en ny, godkjent baseline erstatter den.
+Dette er **gjeldende godkjente kilde-tilstand på `main`**, ikke en
+selvstendig bekreftelse på hva som faktisk er deployet på
+`vardeark.no`. Verifisert deploy er fortsatt eneste bekreftelse på
+faktisk offentlig tilstand, jf. seksjon 10 og SITE-005.
 
 ## 5. Design direction
 
-Gjeldende site-retning når dokumentet er aktivt på `main`: behold den minimalistiske, rolige visuelle
-identiteten som allerede finnes på `main` (sentrert typografi, dempet
-fargepalett, stillestående layout uten navigasjon eller innhold utover
-tittel og status). Endringer i visuell retning skal være evolusjonære,
-ikke en fullstendig redesign, med mindre Founder eksplisitt godkjenner
-noe annet (jf. SITE-001).
+Gjeldende site-retning når dokumentet er aktivt på `main`: behold den
+minimalistiske, rolige visuelle identiteten som allerede finnes på
+`main` — sentrert typografi, dempet fargepalett, høy lesbarhet,
+restrained motion og begrenset navigasjonsstøy. Den godkjente siden har
+nå flere innholdsseksjoner og to språkflater; videre endringer skal
+fortsatt være evolusjonære, ikke en fullstendig redesign, med mindre
+Founder eksplisitt godkjenner noe annet (jf. SITE-001).
 
 ## 6. Information architecture
 
-Nettstedet er i dag én enkelt side uten navigasjon eller undersider.
-Enhver fremtidig utvidelse av informasjonsarkitekturen (flere sider,
-navigasjon, innholdsseksjoner) er en egen, avgrenset endring som krever
-egen vurdering og egen passering av Joint Website Change Gate — den
-forhåndsgodkjennes ikke av dette dokumentet.
+Gjeldende godkjente kilde på `main` har to offentlige språkflater:
+`/` (norsk) og `/en/` (engelsk). Hver flate er en enkelt langside
+med hero, forklarende leseflater, dypere utforskning, teknologi,
+status og kontakt. Navigasjon er begrenset til språkbytte og
+in-page-kontroller/ankere.
+
+Enhver fremtidig utvidelse utover denne avgrensede strukturen
+(ytterligere ruter, ny hovednavigasjon eller nye produktflater) er en
+egen, avgrenset endring som krever egen vurdering og, når den berører
+den offentlige nettsideoverflaten, egen passering av Joint Website
+Change Gate.
 
 ## 7. Responsive and accessibility standard
 
@@ -115,11 +129,16 @@ forhåndsgodkjennes ikke av dette dokumentet.
 - Statisk HTML og CSS som førstevalg. Semantisk markup foretrekkes
   fremfor generiske `div`/`span`-strukturer der et semantisk element
   finnes.
-- Ingen rammeverk, byggepipeline, ekstern avhengighet, analytics,
-  skjematjeneste eller JavaScript uten dokumentert behov og eksplisitt
+- JavaScript er tillatt kun når behovet er dokumentert, avgrenset og
+  eksplisitt godkjent. Gjeldende `main` har et begrenset
+  progressivt-forbedringslag for faner og språkbytte; siden skal
+  fortsatt fungere med normal navigasjon der forbedringen ikke er
+  tilgjengelig.
+- Ingen rammeverk, byggepipeline, unødvendig ekstern avhengighet,
+  analytics eller skjematjeneste uten dokumentert behov og eksplisitt
   Founder-godkjenning.
 - Infrastruktur skal stå i forhold til nettstedets faktiske funksjon —
-  én statisk pre-launch/identitetsside.
+  et lite, statisk, tospråklig informasjonsnettsted.
 
 ## 9. Claim, privacy, data, security, and IP boundaries
 
@@ -353,3 +372,4 @@ Jakjo som produkt eller selskap (jf. seksjon 3).
 | 2026-08-06 | Rettet motstridende candidate/active-semantikk funnet i endelig ChatGPT-governancegjennomgang (authority-blokk, formål og designretning refererte fortsatt til kandidat/venter-på-godkjenning-tilstand etter at livssyklusstatus var endret til aktiv). Ordlyd i authority, formål og designretning justert. Lifecycle Integrity Guard i `docs/SITE_WORKING_MODEL.md` referert. Ingen endring av den offentlige nettsiden ble autorisert. Joint Website Change Gate (SITE-006) forblir NOT PASSED. | ACTIVE WHEN PRESENT ON `main` | Claude Code (SITE-001 lifecycle-integrity task) |
 | 2026-08-06 | Founder autoriserte SITE-007 (Public Repository Disclosure Boundary). Public branches og PR-er presisert som offentlig eksponering fra push-tidspunktet. Pre-push Public Disclosure Integrity Guard etablert (`docs/SITE_WORKING_MODEL.md` §3.2). Patent application- og trade-secret-grensen presisert. Konkrete private Jakjo governance-paths redusert til generisk henvisning i normative public sections. Ingen endring av den offentlige nettsiden ble autorisert. Joint Website Change Gate (SITE-006) forblir NOT PASSED. | ACTIVE WHEN PRESENT ON `main` | Claude Code (SITE-007 public-disclosure-gate task) |
 | 2026-08-06 | Endelig ChatGPT-governancegjennomgang identifiserte et timing gap: pre-push/pre-merge-guarden dekket ikke eksplisitt public writes mellom disse tidspunktene (PR-body updates, comments, reviews, issues, attachments, logs, artifacts). Guarden styrket fra pre-push til pre-public-write, med stage-specific disclosure review for push, PR create/update, interaction og upload/publication, pluss samlet review før ready-for-review og merge. External session links, ephemeral tool identifiers og temporary workspace references lagt til i public artifact set-omfanget. Ingen kjent RED-lekkasje ble funnet. Ingen endring av den offentlige nettsiden ble autorisert. Joint Website Change Gate (SITE-006) forblir NOT PASSED. | ACTIVE WHEN PRESENT ON `main` | Claude Code (SITE-007 public-write-gate correction task) |
+| 2026-09-15 | Synkroniserte beskrivende current-state-seksjoner (§4-§6 og §8) med allerede godkjent `main` etter senere website-arbeid: to språkflater, flere innholdsseksjoner og avgrenset progressiv JavaScript. Ingen SITE-###-beslutning, claim-grense eller offentlig nettsideoverflate ble endret. Presiserte samtidig skillet mellom godkjent `main`-kilde og separat verifisert live deploy. | ACTIVE WHEN PRESENT ON `main` | ChatGPT (SITE baseline sync) |
